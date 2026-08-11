@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Apply to Join | LYRICS VIBES TEAM</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #111827;
+      padding: 30px 15px;
+    }
+
+    .apply-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      display: block;
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      margin: 0 auto 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0b3d91;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #0b3d91;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #d4af37;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #b8941f;
+    }
+
+    .success {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #dcfce7;
+      color: #166534;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="apply-container">
+
+    <!-- LOGO -->
+    <img src="assets/logo.png"
+         alt="LYRICS VIBES TEAM Logo"
+         class="logo">
+
+    <h1>Apply to Join</h1>
+
+    <p class="subtitle">
+      Join LYRICS VIBES TEAM by completing this application form.
+    </p>
+
+    <form id="applicationForm">
+
+      <label>Full Name</label>
+      <input type="text" name="fullName" required>
+
+      <label>Username</label>
+      <input type="text" name="username" required>
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required>
+
+      <label>Email Address</label>
+      <input type="email" name="email" required>
+
+      <label>Age</label>
+      <input type="number" name="age" min="13" required>
+
+      <label>Country</label>
+      <input type="text" name="country" required>
+
+      <label>What is your talent?</label>
+      <select name="talent" required>
+        <option value="">Select talent</option>
+        <option>Lyrics Writing</option>
+        <option>Singing</option>
+        <option>Poetry</option>
+        <option>Rap</option>
+        <option>Spoken Word</option>
+        <option>Content Creation</option>
+        <option>Other</option>
+      </select>
+
+      <label>Which section do you want to join?</label>
+      <select name="section" required>
+        <option value="">Select section</option>
+        <option>Competition Team</option>
+        <option>Creative Team</option>
+        <option>Media Team</option>
+        <option>Management Team</option>
+        <option>General Member</option>
+      </select>
+
+      <label>Why do you want to join LYRICS VIBES TEAM?</label>
+      <textarea name="reason" required></textarea>
+
+      <label>Do you have previous competition experience?</label>
+      <select name="experience" required>
+        <option value="">Select answer</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Tell us about yourself</label>
+      <textarea name="about" required></textarea>
+
+      <label>Profile Picture</label>
+      <input type="file" name="profilePicture" accept="image/*" required>
+
+      <button type="submit" class="submit-btn">
+        SUBMIT APPLICATION
+      </button>
+
+    </form>
+
+    <div class="success" id="successMessage">
+      ✅ Your application has been submitted successfully.
+      <br><br>
+      Please wait for the LYRICS VIBES TEAM administration to review your application.
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById("applicationForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      form.style.display = "none";
+      successMessage.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
