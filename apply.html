@@ -194,6 +194,18 @@
 
   </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+const SUPABASE_KEY = "PUBLISHABLE_KEY_DINKA";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+</script>
+
   <script>
     const form = document.getElementById("applicationForm");
     const successMessage = document.getElementById("successMessage");
