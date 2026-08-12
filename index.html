@@ -180,6 +180,74 @@
             }
         }
     </style>
+.competition-section {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 1100px;
+}
+
+.competition-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.competition-header h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.competition-header p {
+    opacity: 0.8;
+}
+
+.competition-icon {
+    font-size: 45px;
+}
+
+.competition-box,
+.competition-info {
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.competition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.competition-box li {
+    margin: 10px 0;
+}
+
+.competition-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.competition-note {
+    text-align: center;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 15px;
+}
+
+@media (max-width: 700px) {
+    .competition-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .competition-section {
+        padding: 15px;
+    }
+}
 </head>
 
 <body>
