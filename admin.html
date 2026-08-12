@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | LYRICS VIBES TEAM</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172554;
+    }
+
+    header {
+      background: #062b70;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #d4af37;
+    }
+
+    header h1 {
+      font-size: 20px;
+    }
+
+    .logout {
+      background: #d4af37;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.07);
+      border-left: 5px solid #d4af37;
+    }
+
+    .stat h2 {
+      color: #062b70;
+      margin-bottom: 5px;
+    }
+
+    .applications {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.07);
+    }
+
+    .application {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .application h3 {
+      color: #062b70;
+      margin-bottom: 8px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 8px 0;
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .buttons {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .view {
+      background: #062b70;
+      color: white;
+    }
+
+    .approve {
+      background: #198754;
+      color: white;
+    }
+
+    .reject {
+      background: #dc3545;
+      color: white;
+    }
+
+    .details {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #f8fafc;
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+
+    .details img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    #loginBox {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    }
+
+    #loginBox h2 {
+      text-align: center;
+      color: #062b70;
+      margin-bottom: 20px;
+    }
+
+    #loginBox input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    #loginBox button {
+      width: 100%;
+      background: #d4af37;
+      color: white;
+      padding: 13px;
+    }
+
+    #dashboard {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginBox">
+
+  <h2>LYRICS VIBES TEAM</h2>
+
+  <p style="text-align:center;margin-bottom:20px;">
+    Admin Login
+  </p>
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <button onclick="login()">
+    LOGIN
+  </button>
+
+  <p id="loginMessage"
+     style="text-align:center;margin-top:15px;color:red;">
+  </p>
+
+</div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+  <header>
+    <h1>LYRICS VIBES TEAM — ADMIN</h1>
+
+    <button class="logout" onclick="logout()">
+      LOGOUT
+    </button>
+  </header>
+
+
+  <div class="container">
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2 id="total">0</h2>
+        <p>Total Applications</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="pending">0</h2>
+        <p>Pending</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="approved">0</h2>
+        <p>Approved</p>
+      </div>
+
+    </div>
+
+
+    <div class="applications">
+
+      <h2 style="margin-bottom:20px;">
+        Applications
+      </h2>
+
+      <div id="applicationList">
+        Loading applications...
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  // ==============================
+  // SUPABASE SETTINGS
+  // ==============================
+
+  const SUPABASE_URL =
+    "YOUR_SUPABASE_PROJECT_URL";
+
+  const SUPABASE_KEY =
+    "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  // ==============================
+  // ADMIN LOGIN
+  // ==============================
+
+  async function login() {
+
+    const email =
+      document.getElementById("email").value;
+
+    const password =
+      document.getElementById("password").value;
+
+    const message =
+      document.getElementById("loginMessage");
+
+    message.textContent = "";
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if (error) {
+
+      message.textContent =
+        "Login failed: " + error.message;
+
+      return;
+    }
+
+    document.getElementById("loginBox").style.display =
+      "none";
+
+    document.getElementById("dashboard").style.display =
+      "block";
+
+    loadApplications();
+  }
+
+
+  // ==============================
+  // LOGOUT
+  // ==============================
+
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    location.reload();
+  }
+
+
+  // ==============================
+  // LOAD APPLICATIONS
+  // ==============================
+
+  async function loadApplications() {
+
+    const { data, error } =
+      await supabaseClient
+        .from("applications")
+        .select("*")
+        .order("created_at", {
+          ascending: false
+        });
+
+    if (error) {
+
+      document.getElementById("applicationList").innerHTML =
+        "<p style='color:red;'>Unable to load applications.</p>";
+
+      console.error(error);
+
+      return;
+    }
+
+
+    document.getElementById("total").textContent =
+      data.length;
+
+    document.getElementById("pending").textContent =
+      data.filter(app => app.status === "pending").length;
+
+    document.getElementById("approved").textContent =
+      data.filter(app => app.status === "approved").length;
+
+
+    const list =
+      document.getElementById("applicationList");
+
+    if (data.length === 0) {
+
+      list.innerHTML =
+        "<p>No applications yet.</p>";
+
+      return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(app => {
+
+      const item =
+        document.createElement("div");
+
+      item.className = "application";
+
+      item.innerHTML = `
+
+        <h3>${escapeHTML(app.full_name || "")}</h3>
+
+        <p>
+          <strong>Username:</strong>
+          ${escapeHTML(app.username || "")}
+        </p>
+
+        <p>
+          <strong>Talent:</strong>
+          ${escapeHTML(app.talent || "")}
+        </p>
+
+        <span class="status">
+          ${escapeHTML(app.status || "pending")}
+        </span>
+
+        <div class="buttons">
+
+          <button
+            class="view"
+            onclick="toggleDetails('${app.id}')">
+            VIEW APPLICATION
+          </button>
+
+          ${
+            app.status === "pending"
+            ? `
+              <button
+                class="approve"
+                onclick="updateStatus('${app.id}','approved')">
+                APPROVE
+              </button>
+
+              <button
+                class="reject"
+                onclick="updateStatus('${app.id}','rejected')">
+                REJECT
+              </button>
+            `
+            : ""
+          }
+
+        </div>
+
+
+        <div
+          class="details"
+          id="details-${app.id}">
+
+          ${
+            app.profile_picture
+            ? `<img src="${escapeHTML(app.profile_picture)}">`
+            : ""
+          }
+
+          <p><strong>Full Name:</strong> ${escapeHTML(app.full_name || "")}</p>
+
+          <p><strong>Username:</strong> ${escapeHTML(app.username || "")}</p>
+
+          <p><strong>Phone:</strong> ${escapeHTML(app.phone || "")}</p>
+
+          <p><strong>Email:</strong> ${escapeHTML(app.email || "")}</p>
+
+          <p><strong>Age:</strong> ${escapeHTML(app.age || "")}</p>
+
+          <p><strong>Country:</strong> ${escapeHTML(app.country || "")}</p>
+
+          <p><strong>Talent:</strong> ${escapeHTML(app.talent || "")}</p>
+
+          <p><strong>Section:</strong> ${escapeHTML(app.section || "")}</p>
+
+          <p><strong>Experience:</strong> ${escapeHTML(app.experience || "")}</p>
+
+          <p><strong>Why Join:</strong> ${escapeHTML(app.reason || "")}</p>
+
+          <p><strong>About:</strong> ${escapeHTML(app.about || "")}</p>
+
+        </div>
+      `;
+
+      list.appendChild(item);
+
+    });
+
+  }
+
+
+  // ==============================
+  // SHOW / HIDE DETAILS
+  // ==============================
+
+  function toggleDetails(id) {
+
+    const box =
+      document.getElementById("details-" + id);
+
+    box.style.display =
+      box.style.display === "block"
+      ? "none"
+      : "block";
+  }
+
+
+  // ==============================
+  // APPROVE / REJECT
+  // ==============================
+
+  async function updateStatus(id, status) {
+
+    const action =
+      status === "approved"
+      ? "approve"
+      : "reject";
+
+    if (!confirm(
+      `Are you sure you want to ${action} this application?`
+    )) {
+      return;
+    }
+
+
+    const { error } =
+      await supabaseClient
+        .from("applications")
+        .update({
+          status: status
+        })
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Error updating application: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    alert(
+      status === "approved"
+      ? "Application approved successfully!"
+      : "Application rejected."
+    );
+
+
+    loadApplications();
+  }
+
+
+  // ==============================
+  // BASIC HTML ESCAPE
+  // ==============================
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+</script>
+
+</body>
+</html>
