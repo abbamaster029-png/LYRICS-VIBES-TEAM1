@@ -1,8 +1,10 @@
-⁴<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LYRICS VIBES TEAM</title>
 
     <style>
         * {
@@ -145,6 +147,202 @@
             line-height: 1.6;
         }
 
+        /* EXPLORE MEMBERS */
+
+        #members {
+            background: #071a33;
+        }
+
+        .member-card {
+            background: #0d294b;
+            padding: 25px 20px;
+            border-radius: 12px;
+            border: 1px solid #d4af37;
+            text-align: center;
+        }
+
+        .member-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background: #071a33;
+        }
+
+        .member-card h3 {
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+
+        .member-id {
+            color: #d9e3f0;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .member-bio {
+            color: #d9e3f0;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .profile-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #071a33;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .profile-btn:hover {
+            opacity: .85;
+        }
+
+        /* PASSWORD BOX */
+
+        .password-box {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .password-content {
+            background: #0d294b;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .password-content h2 {
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .password-content p {
+            color: #d9e3f0;
+            margin-bottom: 18px;
+        }
+
+        .password-content input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #d4af37;
+            background: #071a33;
+            color: white;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .password-content button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #d4af37;
+            color: #071a33;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .cancel-btn {
+            background: transparent !important;
+            color: white !important;
+            border: 1px solid #d4af37 !important;
+        }
+
+        .error {
+            color: #ff7777;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        /* PROFILE */
+
+        .profile-box {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.88);
+            z-index: 1100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .profile-content {
+            background: #0d294b;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .profile-content h2 {
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .profile-content p {
+            color: #d9e3f0;
+            line-height: 1.7;
+            margin: 8px 0;
+        }
+
+        .close-profile {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #d4af37;
+            background: transparent;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* APPLY BUTTON */
+
+        .apply-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 14px 30px;
+            background: #d4af37;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 7px;
+            border: 2px solid #d4af37;
+        }
+
+        .apply-btn:hover {
+            background: transparent;
+            color: white;
+        }
+
         footer {
             background: #050505;
             border-top: 2px solid #d4af37;
@@ -158,6 +356,7 @@
         }
 
         @media (max-width: 700px) {
+
             nav {
                 display: none;
             }
@@ -167,8 +366,6 @@
             }
         }
     </style>
-    }
-}
 </head>
 
 <body>
@@ -176,20 +373,21 @@
 <header>
 
     <div class="logo">
-  <span>LYRICS VIBES TEAM</span>
-</div>
         <h2>LYRICS VIBES TEAM</h2>
     </div>
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="#">Members</a>
-        <a href="#">About</a>
+        <a href="#members">Members</a>
+        <a href="about.html">About</a>
         <a href="#">Competitions</a>
         <a href="#">Events</a>
     </nav>
 
 </header>
+
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -209,11 +407,12 @@
 
         <div class="buttons">
 
-            <a href="#" class="btn gold">
+            <a href="#members" class="btn gold">
                 Explore Members
             </a>
 
-            <a href="about.html" class="btn blue">About Our Team</a>
+            <a href="about.html" class="btn blue">
+                About Our Team
             </a>
 
         </div>
@@ -221,6 +420,9 @@
     </div>
 
 </section>
+
+
+<!-- WHAT WE DO -->
 
 <section class="section">
 
@@ -229,59 +431,401 @@
     <div class="cards">
 
         <div class="card">
+
             <h3>👥 Members</h3>
+
             <p>
                 Explore our official members and verify
                 their membership through QR Code.
             </p>
+
         </div>
 
-<div class="card">
-    <h3>🏆 Competitions</h3>
-
-    <p>
-        Discover our Lyrics Competition, showcase your creativity
-        and turn lyrics into amazing videos.
-    </p>
-
-    <a href="#lyrics-competition" class="competition-link">
-        View Competition
-    </a>
-</div>
-
-        </p>
-
-    </div>
-
-    <div class="competition-grid">
 
         <div class="card">
+
+            <h3>🏆 Competitions</h3>
+
+            <p>
+                Discover our Lyrics Competition, showcase
+                your creativity and turn lyrics into amazing videos.
+            </p>
+
+            <a href="#lyrics-competition"
+               class="competition-link"
+               style="color:#d4af37; display:inline-block; margin-top:15px;">
+                View Competition
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
             <h3>📚 Tutorials</h3>
+
             <p>
                 Learn Lyrics, Editing, Design and
                 other creative skills.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>📅 Events</h3>
+
             <p>
                 Stay updated with our upcoming
                 events and activities.
             </p>
+
         </div>
 
     </div>
 
-<a href="apply.html" class="apply-btn">
-  APPLY TO JOIN
-</a>
+
+    <a href="apply.html" class="apply-btn">
+        APPLY TO JOIN
+    </a>
 
 </section>
 
+
+<!-- EXPLORE MEMBERS -->
+
+<section class="section" id="members">
+
+    <h2>Explore Members</h2>
+
+    <div class="cards">
+
+
+        <!-- MEMBER 1 -->
+
+        <div class="member-card">
+
+            <div class="member-icon">
+                👤
+            </div>
+
+            <h3>Abba Master</h3>
+
+            <p class="member-id">
+                Member ID: LTV001
+            </p>
+
+            <p class="member-role">
+                Admin
+            </p>
+
+            <p class="member-bio">
+                Creative video editor and designer.
+            </p>
+
+            <button
+                class="profile-btn"
+                onclick="openPassword('Abba Master','LTV001','Admin','Creative video editor and designer.')">
+                View Profile
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 2 -->
+
+        <div class="member-card">
+
+            <div class="member-icon">
+                👤
+            </div>
+
+            <h3>Honourable</h3>
+
+            <p class="member-id">
+                Member ID: LTV002
+            </p>
+
+            <p class="member-role">
+                Admin
+            </p>
+
+            <p class="member-bio">
+                Creative video editor and designer.
+            </p>
+
+            <button
+                class="profile-btn"
+                onclick="openPassword('Honourable','LTV002','Admin','Creative video editor and designer.')">
+                View Profile
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 3 -->
+
+        <div class="member-card">
+
+            <div class="member-icon">
+                👤
+            </div>
+
+            <h3>Abba Miloniya</h3>
+
+            <p class="member-id">
+                Member ID: LTV003
+            </p>
+
+            <p class="member-role">
+                Admin
+            </p>
+
+            <p class="member-bio">
+                Creative video editor and designer.
+            </p>
+
+            <button
+                class="profile-btn"
+                onclick="openPassword('Abba Miloniya','LTV003','Admin','Creative video editor and designer.')">
+                View Profile
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 4 -->
+
+        <div class="member-card">
+
+            <div class="member-icon">
+                👤
+            </div>
+
+            <h3>Sayyada Lyrics</h3>
+
+            <p class="member-id">
+                Member ID: LTV004
+            </p>
+
+            <p class="member-role">
+                Admin
+            </p>
+
+            <p class="member-bio">
+                Creative video editor and designer.
+            </p>
+
+            <button
+                class="profile-btn"
+                onclick="openPassword('Sayyada Lyrics','LTV004','Admin','Creative video editor and designer.')">
+                View Profile
+            </button>
+
+        </div>
+
+
+        <!-- MEMBER 5 -->
+
+        <div class="member-card">
+
+            <div class="member-icon">
+                👤
+            </div>
+
+            <h3>Siyamah Lyrics</h3>
+
+            <p class="member-id">
+                Member ID: LTV005
+            </p>
+
+            <p class="member-role">
+                Admin
+            </p>
+
+            <p class="member-bio">
+                Creative video editor and designer.
+            </p>
+
+            <button
+                class="profile-btn"
+                onclick="openPassword('Siyamah Lyrics','LTV005','Admin','Creative video editor and designer.')">
+                View Profile
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PASSWORD -->
+
+<div class="password-box" id="passwordBox">
+
+    <div class="password-content">
+
+        <h2>🔐 Member Profile</h2>
+
+        <p>
+            Enter the password to view this member's profile.
+        </p>
+
+        <p class="error" id="passwordError">
+            Incorrect password. Please try again.
+        </p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter password">
+
+        <br>
+
+        <button onclick="checkPassword()">
+            Unlock Profile
+        </button>
+
+        <button
+            class="cancel-btn"
+            onclick="closePassword()">
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="profile-box" id="profileBox">
+
+    <div class="profile-content">
+
+        <h2 id="profileName">
+            Member Name
+        </h2>
+
+        <p>
+            <strong>Member ID:</strong>
+            <span id="profileId"></span>
+        </p>
+
+        <p>
+            <strong>Position:</strong>
+            <span id="profileRole"></span>
+        </p>
+
+        <p>
+            <strong>Bio:</strong>
+            <span id="profileBio"></span>
+        </p>
+
+        <button
+            class="close-profile"
+            onclick="closeProfile()">
+            Close Profile
+        </button>
+
+    </div>
+
+</div>
+
+
 <footer>
-    © 2026 <span>Lyrics Vibes Team</span> — All Rights Reserved.
+
+    © 2026
+    <span>Lyrics Vibes Team</span>
+    — All Rights Reserved.
+
 </footer>
+
+
+<script>
+
+    const MEMBER_PASSWORD = "LVT2025";
+
+    let selectedMember = {};
+
+    function openPassword(name, id, role, bio) {
+
+        selectedMember = {
+            name: name,
+            id: id,
+            role: role,
+            bio: bio
+        };
+
+        document.getElementById("passwordInput").value = "";
+
+        document.getElementById("passwordError").style.display = "none";
+
+        document.getElementById("passwordBox").style.display = "flex";
+
+        document.getElementById("passwordInput").focus();
+    }
+
+
+    function checkPassword() {
+
+        const password =
+            document.getElementById("passwordInput").value;
+
+        if (password === MEMBER_PASSWORD) {
+
+            document.getElementById("passwordBox").style.display = "none";
+
+            document.getElementById("profileName").textContent =
+                selectedMember.name;
+
+            document.getElementById("profileId").textContent =
+                selectedMember.id;
+
+            document.getElementById("profileRole").textContent =
+                selectedMember.role;
+
+            document.getElementById("profileBio").textContent =
+                selectedMember.bio;
+
+            document.getElementById("profileBox").style.display = "flex";
+
+        } else {
+
+            document.getElementById("passwordError").style.display = "block";
+
+        }
+    }
+
+
+    function closePassword() {
+
+        document.getElementById("passwordBox").style.display = "none";
+
+    }
+
+
+    function closeProfile() {
+
+        document.getElementById("profileBox").style.display = "none";
+
+    }
+
+
+    document.getElementById("passwordInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                checkPassword();
+
+            }
+
+        });
+
+</script>
 
 </body>
 </html>
