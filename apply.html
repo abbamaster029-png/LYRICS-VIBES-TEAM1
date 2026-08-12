@@ -338,26 +338,25 @@
        INSERT INTO DATABASE
     ============================== */
 
-    const { data, error } =
-      await supabaseClient
-        .from("applications")
-        .insert([
-          {
-            full_name: fullName,
-            username: username,
-            phone: phone,
-            email: email,
-            age: Number(age),
-            country: country,
-            talent: talent,
-            section: section,
-            reason: reason,
-            experience: experience,
-            about: about,
-            status: "pending"
-          }
-        ])
-        .select();
+    const { error } =
+  await supabaseClient
+    .from("applications")
+    .insert([
+      {
+        full_name: fullName,
+        username: username,
+        phone: phone,
+        email: email,
+        age: Number(age),
+        country: country,
+        talent: talent,
+        section: section,
+        reason: reason,
+        experience: experience,
+        about: about,
+        status: "pending"
+      }
+    ]);
 
 
     loadingMessage.style.display = "none";
