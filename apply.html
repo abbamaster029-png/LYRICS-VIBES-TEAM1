@@ -6,6 +6,8 @@
 
   <title>Apply to Join | LYRICS VIBES TEAM</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -94,6 +96,11 @@
       background: #b8941f;
     }
 
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .success {
       display: none;
       margin-top: 20px;
@@ -104,6 +111,25 @@
       text-align: center;
       font-weight: bold;
     }
+
+    .error {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #fee2e2;
+      color: #991b1b;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      color: #0b3d91;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -111,10 +137,11 @@
 
   <div class="apply-container">
 
-    <!-- LOGO -->
-    <img src="assets/logo.png"
-         alt="LYRICS VIBES TEAM Logo"
-         class="logo">
+    <img
+      src="assets/logo.png"
+      alt="LYRICS VIBES TEAM Logo"
+      class="logo"
+    >
 
     <h1>Apply to Join</h1>
 
@@ -178,11 +205,23 @@
       <textarea name="about" required></textarea>
 
       <label>Profile Picture</label>
-      <input type="file" name="profilePicture" accept="image/*" required>
+      <input
+        type="file"
+        name="profilePicture"
+        accept="image/*"
+      >
 
-      <button type="submit" class="submit-btn">
+      <button
+        type="submit"
+        class="submit-btn"
+        id="submitBtn"
+      >
         SUBMIT APPLICATION
       </button>
+
+      <div class="loading" id="loadingMessage">
+        Submitting your application...
+      </div>
 
     </form>
 
@@ -192,31 +231,175 @@
       Please wait for the LYRICS VIBES TEAM administration to review your application.
     </div>
 
+    <div class="error" id="errorMessage"></div>
+
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
-const SUPABASE_KEY = "sb_publishable_NE_YgiygK0A1L3vvihrjiQ_ymyYDeX6";
 
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+  /* ==============================
+     SUPABASE CONNECTION
+  ============================== */
+
+  const SUPABASE_URL =
+    "https://lkwllebztakwzfdnusjp.supabase.co";
+
+  /*
+    Ka saka Publishable Key ɗinka a nan.
+    Kada ka saka service_role key.
+  */
+
+  const SUPABASE_KEY =
+    "sb_publishable_NE_YgiygK0A1L3vvihrjiQ_ymyYDeX6";
+
+
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  /* ==============================
+     FORM
+  ============================== */
+
+  const form =
+    document.getElementById("applicationForm");
+
+  const submitBtn =
+    document.getElementById("submitBtn");
+
+  const loadingMessage =
+    document.getElementById("loadingMessage");
+
+  const successMessage =
+    document.getElementById("successMessage");
+
+  const errorMessage =
+    document.getElementById("errorMessage");
+
+
+  form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    errorMessage.style.display = "none";
+
+    submitBtn.disabled = true;
+
+    loadingMessage.style.display = "block";
+
+
+    const formData =
+      new FormData(form);
+
+
+    /* ==============================
+       GET FORM VALUES
+    ============================== */
+
+    const fullName =
+      formData.get("fullName");
+
+    const username =
+      formData.get("username");
+
+    const phone =
+      formData.get("phone");
+
+    const email =
+      formData.get("email");
+
+    const age =
+      formData.get("age");
+
+    const country =
+      formData.get("country");
+
+    const talent =
+      formData.get("talent");
+
+    const section =
+      formData.get("section");
+
+    const reason =
+      formData.get("reason");
+
+    const experience =
+      formData.get("experience");
+
+    const about =
+      formData.get("about");
+
+
+    /* ==============================
+       INSERT INTO DATABASE
+    ============================== */
+
+    const { data, error } =
+      await supabaseClient
+        .from("applications")
+        .insert([
+          {
+            full_name: fullName,
+            username: username,
+            phone: phone,
+            email: email,
+            age: Number(age),
+            country: country,
+            talent: talent,
+            section: section,
+            reason: reason,
+            experience: experience,
+            about: about,
+            status: "pending"
+          }
+        ])
+        .select();
+
+
+    loadingMessage.style.display = "none";
+
+
+    /* ==============================
+       ERROR
+    ============================== */
+
+    if (error) {
+
+      console.error(error);
+
+      errorMessage.textContent =
+        "❌ Application failed: " +
+        error.message;
+
+      errorMessage.style.display = "block";
+
+      submitBtn.disabled = false;
+
+      return;
+    }
+
+
+    /* ==============================
+       SUCCESS
+    ============================== */
+
+    form.style.display = "none";
+
+    successMessage.style.display = "block";
+
+
+    console.log(
+      "Application submitted:",
+      data
+    );
+
+  });
+
 </script>
-
-  <script>
-    const form = document.getElementById("applicationForm");
-    const successMessage = document.getElementById("successMessage");
-
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      form.style.display = "none";
-      successMessage.style.display = "block";
-    });
-  </script>
 
 </body>
 </html>
