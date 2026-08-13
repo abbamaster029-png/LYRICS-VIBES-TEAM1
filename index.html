@@ -25,7 +25,9 @@
             min-height: 100vh;
         }
 
-        /* HEADER */
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             background: #050505;
@@ -107,9 +109,7 @@
         .hero p {
             max-width: 600px;
             margin: auto;
-
             line-height: 1.7;
-
             color: #d9e3f0;
         }
 
@@ -119,17 +119,11 @@
 
         .btn {
             display: inline-block;
-
             padding: 13px 25px;
-
             margin: 6px;
-
             border-radius: 7px;
-
             text-decoration: none;
-
             font-weight: bold;
-
             cursor: pointer;
         }
 
@@ -149,7 +143,9 @@
         }
 
 
-        /* WHAT WE DO */
+        /* =========================
+           WHAT WE DO
+        ========================= */
 
         .section {
             padding: 60px 7%;
@@ -176,11 +172,8 @@
 
         .card {
             background: #0d294b;
-
             padding: 30px 20px;
-
             border-radius: 12px;
-
             border: 1px solid #d4af37;
         }
 
@@ -198,28 +191,23 @@
             color: #d4af37;
             display: inline-block;
             margin-top: 15px;
+            cursor: pointer;
         }
 
 
-        /* APPLY */
+        /* =========================
+           APPLY
+        ========================= */
 
         .apply-btn {
             display: inline-block;
-
             margin-top: 40px;
-
             padding: 14px 30px;
-
             background: #d4af37;
-
             color: #071a33;
-
             text-decoration: none;
-
             font-weight: bold;
-
             border-radius: 7px;
-
             border: 2px solid #d4af37;
         }
 
@@ -235,35 +223,24 @@
 
         #membersPage {
             display: none;
-
             min-height: calc(100vh - 80px);
-
             padding: 45px 7%;
-
             text-align: center;
         }
 
         .members-title {
             color: #d4af37;
-
             font-size: 30px;
-
             margin-bottom: 10px;
         }
 
         .members-intro {
             color: #d9e3f0;
-
             font-size: 14px;
-
             margin-bottom: 30px;
         }
 
-
-        /* SMALL MEMBERS GRID */
-
         .members-grid {
-
             display: grid;
 
             grid-template-columns:
@@ -275,23 +252,14 @@
             gap: 15px;
 
             max-width: 1000px;
-
             margin: auto;
         }
 
-
-        /* SMALL PROFILE CARD */
-
         .member-card {
-
             background: #0d294b;
-
             padding: 18px 14px;
-
             border-radius: 9px;
-
             border: 1px solid #d4af37;
-
             transition: .25s;
         }
 
@@ -299,92 +267,54 @@
             transform: translateY(-3px);
         }
 
-
-        /* SMALL PROFILE ICON */
-
         .member-icon {
-
             width: 55px;
             height: 55px;
-
             margin: 0 auto 9px;
-
             border-radius: 50%;
-
             border: 2px solid #d4af37;
-
             background: #071a33;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             font-size: 23px;
         }
 
-
         .member-card h3 {
-
             color: #d4af37;
-
             font-size: 16px;
-
             margin-bottom: 6px;
         }
 
-
         .member-id {
-
             color: #d9e3f0;
-
             font-size: 11px;
-
             margin-bottom: 5px;
         }
 
-
         .member-role {
-
             font-size: 12px;
-
             font-weight: bold;
-
             margin-bottom: 6px;
         }
 
-
         .member-bio {
-
             color: #d9e3f0;
-
             font-size: 11px;
-
             line-height: 1.4;
-
             margin-bottom: 12px;
         }
 
-
-        /* PROFILE BUTTON */
-
         .profile-btn {
-
             background: #d4af37;
-
             color: #071a33;
-
             border: none;
-
             padding: 8px 13px;
-
             border-radius: 5px;
-
             font-size: 11px;
-
             font-weight: bold;
-
             cursor: pointer;
         }
 
@@ -393,26 +323,168 @@
         }
 
 
-        /* BACK HOME */
+        /* =========================
+           COMPETITION PAGE
+        ========================= */
+
+        #competitionPage {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 40px 6%;
+        }
+
+        .competition-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .competition-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .competition-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .competition-header h1 {
+            color: #d4af37;
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .competition-header p {
+            color: #d9e3f0;
+            font-size: 14px;
+        }
+
+        .competition-intro {
+            background: #0d294b;
+            border: 1px solid #d4af37;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .competition-intro h2 {
+            color: #d4af37;
+            font-size: 20px;
+            margin-bottom: 9px;
+        }
+
+        .competition-intro p {
+            color: #d9e3f0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .competition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .competition-card {
+            background: #0d294b;
+            border: 1px solid #d4af37;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .competition-card h3 {
+            color: #d4af37;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .competition-card p {
+            color: #d9e3f0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .competition-box {
+            background: #0d294b;
+            border: 1px solid #d4af37;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 18px;
+        }
+
+        .competition-box h2 {
+            color: #d4af37;
+            font-size: 20px;
+            margin-bottom: 13px;
+        }
+
+        .competition-box p {
+            color: #d9e3f0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .criteria {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+        }
+
+        .criteria-item {
+            background: #071a33;
+            border: 1px solid rgba(212,175,55,.45);
+            border-radius: 7px;
+            padding: 10px;
+            color: #d9e3f0;
+            font-size: 12px;
+        }
+
+        .rules {
+            padding-left: 19px;
+        }
+
+        .rules li {
+            color: #d9e3f0;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+
+        .certificate-area {
+            border: 1px dashed #d4af37;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        .certificate-area h3 {
+            color: #d4af37;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .certificate-area p {
+            color: #aaa;
+            font-size: 12px;
+        }
 
         .back-home {
-
-            display: inline-block;
-
-            margin-top: 28px;
+            display: block;
+            width: fit-content;
+            margin: 25px auto 5px;
 
             padding: 9px 18px;
 
             border: 1px solid #d4af37;
-
             border-radius: 6px;
 
             color: white;
-
             background: transparent;
 
             cursor: pointer;
-
             font-size: 13px;
         }
 
@@ -423,173 +495,128 @@
 
 
         /* =========================
-           MODAL
+           BACK HOME
+        ========================= */
+
+        .page-back {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 9px 18px;
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            color: white;
+            background: transparent;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .page-back:hover {
+            background: #d4af37;
+            color: #071a33;
+        }
+
+
+        /* =========================
+           MODALS
         ========================= */
 
         .modal {
-
             display: none;
-
             position: fixed;
-
             inset: 0;
-
             background: rgba(0,0,0,.88);
-
             z-index: 1000;
 
             align-items: center;
-
             justify-content: center;
 
             padding: 15px;
         }
 
-
-        /* SMALL MODAL */
-
         .modal-box {
-
             background: #0d294b;
-
             border: 2px solid #d4af37;
-
             border-radius: 10px;
-
             padding: 22px;
-
             width: 100%;
-
             max-width: 320px;
-
             text-align: center;
         }
 
-
         .modal-box h2 {
-
             color: #d4af37;
-
             font-size: 21px;
-
             margin-bottom: 12px;
         }
-
 
         .modal-box p {
-
             color: #d9e3f0;
-
             font-size: 13px;
-
             line-height: 1.5;
-
             margin-bottom: 12px;
         }
 
-
         .password-input {
-
             width: 100%;
-
             padding: 10px;
-
             border-radius: 5px;
-
             border: 1px solid #d4af37;
-
             background: #071a33;
-
             color: white;
-
             outline: none;
-
             margin-bottom: 10px;
-
             font-size: 13px;
         }
 
-
         .unlock-btn {
-
             background: #d4af37;
-
             color: #071a33;
-
             border: none;
-
             padding: 9px 15px;
-
             border-radius: 5px;
-
             font-size: 12px;
-
             font-weight: bold;
-
             cursor: pointer;
         }
-
 
         .cancel-btn,
         .close-btn {
-
             background: transparent;
-
             color: white;
-
             border: 1px solid #d4af37;
-
             padding: 8px 13px;
-
             border-radius: 5px;
-
             font-size: 12px;
-
             cursor: pointer;
-
             margin-left: 5px;
         }
 
-
         .error {
-
             color: #ff7777 !important;
-
             display: none;
         }
 
-
-        /* PROFILE INFORMATION */
-
         .profile-info {
-
             text-align: left;
-
             margin-top: 15px;
         }
 
         .profile-info p {
-
             margin-bottom: 9px;
-
             font-size: 13px;
         }
 
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-
             background: #050505;
-
             border-top: 2px solid #d4af37;
-
             text-align: center;
-
             padding: 22px;
-
             color: #aaa;
-
             font-size: 13px;
         }
 
@@ -620,7 +647,8 @@
                 width: 120px;
             }
 
-            #membersPage {
+            #membersPage,
+            #competitionPage {
                 padding: 35px 5%;
             }
 
@@ -629,10 +657,7 @@
             }
 
             .members-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
+                grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
 
@@ -652,6 +677,16 @@
                 padding: 7px 10px;
                 font-size: 10px;
             }
+
+            .competition-grid,
+            .criteria {
+                grid-template-columns: 1fr;
+            }
+
+            .competition-header h1 {
+                font-size: 27px;
+            }
+
         }
 
     </style>
@@ -691,7 +726,7 @@
             About
         </a>
 
-        <a href="#">
+        <a onclick="showCompetition()">
             Competitions
         </a>
 
@@ -740,8 +775,6 @@
 
             <div class="buttons">
 
-
-                <!-- EXPLORE MEMBERS -->
 
                 <a
                     class="btn gold"
@@ -792,8 +825,7 @@
                 </p>
 
                 <a
-                    onclick="showMembers()"
-                    style="cursor:pointer;">
+                    onclick="showMembers()">
 
                     View Members
 
@@ -810,12 +842,16 @@
                 </h3>
 
                 <p>
-                    Discover our Lyrics Competition, showcase
-                    your creativity and turn lyrics into amazing videos.
+                    Discover our LVT Lyrics Competition,
+                    showcase your creativity and turn lyrics
+                    into amazing videos.
                 </p>
 
-                <a href="#">
+                <a
+                    onclick="showCompetition()">
+
                     View Competition
+
                 </a>
 
             </div>
@@ -887,8 +923,6 @@
     <div class="members-grid">
 
 
-        <!-- MEMBER 1 -->
-
         <div class="member-card">
 
             <div class="member-icon">
@@ -927,8 +961,6 @@
         </div>
 
 
-
-        <!-- MEMBER 2 -->
 
         <div class="member-card">
 
@@ -969,8 +1001,6 @@
 
 
 
-        <!-- MEMBER 3 -->
-
         <div class="member-card">
 
             <div class="member-icon">
@@ -1010,8 +1040,6 @@
 
 
 
-        <!-- MEMBER 4 -->
-
         <div class="member-card">
 
             <div class="member-icon">
@@ -1050,8 +1078,6 @@
         </div>
 
 
-
-        <!-- MEMBER 5 -->
 
         <div class="member-card">
 
@@ -1093,8 +1119,6 @@
     </div>
 
 
-    <!-- BACK HOME -->
-
     <button
         class="back-home"
         onclick="showHome()">
@@ -1102,6 +1126,265 @@
         ← Back to Home
 
     </button>
+
+</div>
+
+
+
+<!-- =========================
+     COMPETITION PAGE
+========================= -->
+
+<div id="competitionPage">
+
+    <div class="competition-container">
+
+
+        <div class="competition-header">
+
+            <div class="competition-icon">
+                🏆
+            </div>
+
+            <h1>
+                LVT Lyrics Competition
+            </h1>
+
+            <p>
+                Lyrics Video Competition
+            </p>
+
+        </div>
+
+
+
+        <div class="competition-intro">
+
+            <h2>
+                About The Competition
+            </h2>
+
+            <p>
+                LVT Lyrics Competition is a creative Lyrics Video
+                competition organized by Lyrics Vibes Team to
+                encourage creativity, teamwork and video editing skills.
+            </p>
+
+        </div>
+
+
+
+        <div class="competition-grid">
+
+
+            <div class="competition-card">
+
+                <h3>
+                    👥 Eligibility
+                </h3>
+
+                <p>
+                    The competition is open to
+                    Lyrics Vibes Team members only.
+                </p>
+
+            </div>
+
+
+
+            <div class="competition-card">
+
+                <h3>
+                    🆓 Entry
+                </h3>
+
+                <p>
+                    Participation is completely free.
+                    No registration fee is required.
+                </p>
+
+            </div>
+
+
+
+            <div class="competition-card">
+
+                <h3>
+                    📅 Schedule
+                </h3>
+
+                <p>
+                    The competition is held every
+                    two months.
+                </p>
+
+            </div>
+
+
+
+            <div class="competition-card">
+
+                <h3>
+                    🎬 Competition Type
+                </h3>
+
+                <p>
+                    Participants compete by creating
+                    creative Lyrics Videos.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="competition-box">
+
+            <h2>
+                🎯 How To Participate
+            </h2>
+
+            <p>
+                Members can participate by creating a Lyrics Video
+                according to the competition requirements and
+                submitting their work within the announced deadline.
+                Participants are encouraged to contribute positively
+                to the team and showcase their creativity.
+            </p>
+
+        </div>
+
+
+
+        <div class="competition-box">
+
+            <h2>
+                ⭐ Judging Criteria
+            </h2>
+
+            <div class="criteria">
+
+                <div class="criteria-item">
+                    ✨ Text Animation
+                </div>
+
+                <div class="criteria-item">
+                    🎨 Text Colors
+                </div>
+
+                <div class="criteria-item">
+                    🖼️ Background
+                </div>
+
+                <div class="criteria-item">
+                    📝 Word-by-Word Lyrics
+                </div>
+
+                <div class="criteria-item">
+                    💡 Creativity
+                </div>
+
+                <div class="criteria-item">
+                    🎞️ Overall Editing
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="competition-box">
+
+            <h2>
+                📤 Submission
+            </h2>
+
+            <p>
+                All competition entries must be submitted within
+                the announced submission period. Late submissions
+                may not be accepted.
+            </p>
+
+        </div>
+
+
+
+        <div class="competition-box">
+
+            <h2>
+                🏅 Prizes & Recognition
+            </h2>
+
+            <p>
+                Winners will receive a Certificate of Achievement
+                along with other prizes and recognition prepared
+                for the competition.
+            </p>
+
+
+            <div class="certificate-area">
+
+                <h3>
+                    📜 Certificate
+                </h3>
+
+                <p>
+                    Certificate images will be added here later.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="competition-box">
+
+            <h2>
+                📜 Competition Rules
+            </h2>
+
+            <ul class="rules">
+
+                <li>
+                    Submit your work within the announced deadline.
+                </li>
+
+                <li>
+                    Follow all competition requirements and guidelines.
+                </li>
+
+                <li>
+                    The submitted work should be created by the participant.
+                </li>
+
+                <li>
+                    Participants should respect the competition
+                    instructions provided by the team.
+                </li>
+
+                <li>
+                    Any additional rules will be announced when
+                    the competition begins.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <button
+            class="back-home"
+            onclick="showHome()">
+
+            ← Back to Home
+
+        </button>
+
+    </div>
 
 </div>
 
@@ -1121,11 +1404,9 @@
             🔐 Member Profile
         </h2>
 
-
         <p>
             Enter the password to view this profile.
         </p>
-
 
         <p
             class="error"
@@ -1135,13 +1416,11 @@
 
         </p>
 
-
         <input
             type="password"
             id="passwordInput"
             class="password-input"
             placeholder="Enter password">
-
 
         <button
             class="unlock-btn"
@@ -1150,7 +1429,6 @@
             Unlock Profile
 
         </button>
-
 
         <button
             class="cancel-btn"
@@ -1180,7 +1458,6 @@
             Member Profile
         </h2>
 
-
         <div class="profile-info">
 
             <p>
@@ -1188,12 +1465,10 @@
                 <span id="profileId"></span>
             </p>
 
-
             <p>
                 <strong>Position:</strong>
                 <span id="profileRole"></span>
             </p>
-
 
             <p>
                 <strong>Bio:</strong>
@@ -1201,7 +1476,6 @@
             </p>
 
         </div>
-
 
         <button
             class="close-btn"
@@ -1239,17 +1513,30 @@
        PAGE NAVIGATION
     ========================= */
 
-    function showMembers() {
+    function hideAllPages() {
 
         document.getElementById(
             "homePage"
         ).style.display = "none";
 
-
         document.getElementById(
             "membersPage"
-        ).style.display = "block";
+        ).style.display = "none";
 
+        document.getElementById(
+            "competitionPage"
+        ).style.display = "none";
+
+    }
+
+
+    function showHome() {
+
+        hideAllPages();
+
+        document.getElementById(
+            "homePage"
+        ).style.display = "block";
 
         window.scrollTo({
             top: 0,
@@ -1259,17 +1546,29 @@
     }
 
 
-    function showHome() {
+    function showMembers() {
+
+        hideAllPages();
 
         document.getElementById(
             "membersPage"
-        ).style.display = "none";
-
-
-        document.getElementById(
-            "homePage"
         ).style.display = "block";
 
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function showCompetition() {
+
+        hideAllPages();
+
+        document.getElementById(
+            "competitionPage"
+        ).style.display = "block";
 
         window.scrollTo({
             top: 0,
@@ -1289,9 +1588,6 @@
     let selectedMember = null;
 
 
-
-    /* OPEN PROFILE */
-
     function openProfile(
         name,
         id,
@@ -1300,12 +1596,10 @@
     ) {
 
         selectedMember = {
-
             name: name,
             id: id,
             role: role,
             bio: bio
-
         };
 
 
@@ -1336,8 +1630,6 @@
 
 
 
-    /* CHECK PASSWORD */
-
     function checkPassword() {
 
         const enteredPassword =
@@ -1350,7 +1642,6 @@
             enteredPassword ===
             MEMBER_PASSWORD
         ) {
-
 
             document.getElementById(
                 "passwordModal"
@@ -1399,8 +1690,6 @@
 
 
 
-    /* CLOSE PASSWORD */
-
     function closePassword() {
 
         document.getElementById(
@@ -1411,8 +1700,6 @@
 
 
 
-    /* CLOSE PROFILE */
-
     function closeProfile() {
 
         document.getElementById(
@@ -1422,8 +1709,6 @@
     }
 
 
-
-    /* ENTER KEY */
 
     document.getElementById(
         "passwordInput"
@@ -1441,8 +1726,6 @@
     );
 
 
-
-    /* CLOSE MODALS BY CLICKING OUTSIDE */
 
     window.addEventListener(
         "click",
