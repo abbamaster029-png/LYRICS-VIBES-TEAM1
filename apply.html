@@ -1,402 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Apply to Join | LYRICS VIBES TEAM</title>
+<title>Apply to Join | LYRICS VIBES TEAM</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#03152d;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+:root{
+    --navy:#03152d;
+    --navy2:#061d3b;
+    --card:#071f3d;
+    --gold:#e0ad22;
+    --gold2:#f2c43d;
+    --white:#fff;
+    --muted:#c8d2df;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    width:100%;
+    height:58px;
+    background:#050505;
+    border-bottom:1px solid var(--gold);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo h2{
+    color:var(--gold);
+    font-size:18px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:27px;
+}
+
+nav a{
+    color:#eee;
+    text-decoration:none;
+    font-size:13px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+nav a.active{
+    color:var(--gold);
+}
+
+.menu-btn{
+    display:none;
+    width:38px;
+    height:34px;
+    border:1px solid rgba(224,173,34,.6);
+    background:transparent;
+    border-radius:6px;
+    cursor:pointer;
+    padding:6px;
+}
+
+.menu-btn span{
+    display:block;
+    height:2px;
+    background:var(--gold);
+    margin:4px 0;
+    border-radius:5px;
+}
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+.mobile-nav{
+    display:none;
+}
+
+.mobile-nav.show{
+    display:block;
+}
+
+.mobile-nav a{
+    display:block;
+    padding:13px 5%;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    background:#050505;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    cursor:pointer;
+}
+
+.mobile-nav a:hover{
+    color:var(--gold);
+}
+
+/* =========================================================
+   APPLY AREA
+========================================================= */
+
+.apply-page{
+    min-height:calc(100vh - 58px);
+
+    padding:65px 15px 80px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(10,43,78,.45),
+            transparent 50%
+        ),
+        linear-gradient(
+            180deg,
+            #061b37,
+            #03152d
+        );
+}
+
+/* =========================================================
+   APPLY HEADER
+========================================================= */
+
+.apply-header{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 38px;
+}
+
+.apply-logo{
+    width:145px;
+    height:145px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 22px;
+}
+
+.apply-header h1{
+    color:var(--gold2);
+    font-size:38px;
+    margin-bottom:12px;
+    font-weight:800;
+}
+
+.apply-header h3{
+    color:#fff;
+    font-size:18px;
+    margin-bottom:13px;
+}
+
+.apply-header p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.apply-container{
+    width:100%;
+    max-width:760px;
+    margin:auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #071f3d,
+            #051a34
+        );
+
+    border:1px solid rgba(224,173,34,.25);
+    border-radius:10px;
+
+    padding:32px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.form-title{
+    text-align:center;
+    color:var(--gold2);
+    font-size:21px;
+    margin-bottom:27px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    color:#f2f2f2;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:13px 14px;
+
+    border:1px solid rgba(224,173,34,.22);
+
+    border-radius:6px;
+
+    outline:none;
+
+    background:#03152d;
+
+    color:#fff;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#758397;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 2px rgba(224,173,34,.08);
+}
+
+select{
+    cursor:pointer;
+}
+
+select option{
+    background:#03152d;
+    color:#fff;
+}
+
+textarea{
+    min-height:115px;
+    resize:vertical;
+    line-height:1.6;
+}
+
+/* =========================================================
+   FILE INPUT
+========================================================= */
+
+input[type="file"]{
+    padding:10px;
+    cursor:pointer;
+}
+
+input[type="file"]::file-selector-button{
+    background:var(--gold2);
+    color:#071a33;
+    border:none;
+    padding:8px 11px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-btn{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:15px;
+
+    border:2px solid var(--gold2);
+
+    border-radius:7px;
+
+    background:var(--gold2);
+
+    color:#071a33;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.submit-btn:hover{
+    background:transparent;
+    color:#fff;
+}
+
+.submit-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+    display:none;
+
+    text-align:center;
+
+    margin-top:17px;
+
+    color:var(--gold2);
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success{
+    display:none;
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    padding:28px;
+
+    border-radius:9px;
+
+    background:#071f3d;
+
+    border:1px solid var(--gold);
+
+    color:#fff;
+
+    text-align:center;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+.success-title{
+    color:var(--gold2);
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.success-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+    display:none;
+
+    max-width:760px;
+
+    margin:18px auto 0;
+
+    padding:15px;
+
+    border-radius:7px;
+
+    background:#351515;
+
+    border:1px solid #8f3d3d;
+
+    color:#ffb4b4;
+
+    text-align:center;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-home{
+    display:block;
+
+    width:max-content;
+
+    margin:28px auto 0;
+
+    padding:10px 20px;
+
+    border:1px solid var(--gold);
+
+    border-radius:6px;
+
+    background:transparent;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    transition:.25s;
+}
+
+.back-home:hover{
+    background:var(--gold);
+    color:#071a33;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#050505;
+
+    border-top:1px solid var(--gold);
+
+    text-align:center;
+
+    padding:22px 15px;
+
+    color:#999;
+
+    font-size:12px;
+}
+
+footer span{
+    color:var(--gold2);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:800px){
+
+    .apply-container{
+        max-width:700px;
     }
 
-    body {
-      background: #f5f7fb;
-      color: #111827;
-      padding: 30px 15px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    header{
+        height:57px;
+        padding:0 5%;
     }
 
-    .apply-container {
-      max-width: 700px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    .logo h2{
+        font-size:15px;
     }
 
-    .logo {
-      display: block;
-      width: 75px;
-      height: 75px;
-      object-fit: contain;
-      margin: 0 auto 15px;
+    nav{
+        display:none;
     }
 
-    h1 {
-      text-align: center;
-      color: #0b3d91;
-      margin-bottom: 8px;
+    .menu-btn{
+        display:block;
     }
 
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 25px;
+    .apply-page{
+        padding:48px 12px 60px;
     }
 
-    label {
-      display: block;
-      margin: 15px 0 7px;
-      font-weight: bold;
+    .apply-header{
+        margin-bottom:30px;
+    }
+
+    .apply-logo{
+        width:115px;
+        height:115px;
+        margin-bottom:18px;
+    }
+
+    .apply-header h1{
+        font-size:29px;
+    }
+
+    .apply-header h3{
+        font-size:16px;
+    }
+
+    .apply-header p{
+        font-size:12px;
+        line-height:1.7;
+    }
+
+    .apply-container{
+        padding:22px 16px;
+        border-radius:8px;
+    }
+
+    .form-title{
+        font-size:18px;
+        margin-bottom:23px;
+    }
+
+    label{
+        font-size:12px;
     }
 
     input,
     select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      outline: none;
-      font-size: 15px;
+    textarea{
+        padding:12px;
+        font-size:13px;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #0b3d91;
+    .submit-btn{
+        font-size:14px;
     }
 
-    textarea {
-      min-height: 110px;
-      resize: vertical;
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    .logo h2{
+        font-size:13px;
     }
 
-    .submit-btn {
-      width: 100%;
-      margin-top: 25px;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #d4af37;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
+    .apply-page{
+        padding-left:9px;
+        padding-right:9px;
     }
 
-    .submit-btn:hover {
-      background: #b8941f;
+    .apply-header h1{
+        font-size:26px;
     }
 
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    .apply-container{
+        padding:19px 13px;
     }
 
-    .success {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: #dcfce7;
-      color: #166534;
-      text-align: center;
-      font-weight: bold;
-    }
+}
 
-    .error {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: #fee2e2;
-      color: #991b1b;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .loading {
-      display: none;
-      text-align: center;
-      margin-top: 15px;
-      color: #0b3d91;
-      font-weight: bold;
-    }
-  </style>
+</style>
 </head>
+
 
 <body>
 
-  <div class="apply-container">
 
-    <img
-      src="assets/logo.png"
-      alt="LYRICS VIBES TEAM Logo"
-      class="logo"
-    >
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
-    <h1>Apply to Join</h1>
+<header>
 
-    <p class="subtitle">
-      Join LYRICS VIBES TEAM by completing this application form.
-    </p>
+    <div class="logo">
 
-    <form id="applicationForm">
+        <h2>
+            LYRICS VIBES TEAM
+        </h2>
 
-      <label>Full Name</label>
-      <input type="text" name="fullName" required>
-
-      <label>Username</label>
-      <input type="text" name="username" required>
-
-      <label>Phone Number</label>
-      <input type="tel" name="phone" required>
-
-      <label>Email Address</label>
-      <input type="email" name="email" required>
-
-      <label>Age</label>
-      <input type="number" name="age" min="13" required>
-
-      <label>Country</label>
-      <input type="text" name="country" required>
-
-      <label>What is your talent?</label>
-      <select name="talent" required>
-        <option value="">Select talent</option>
-        <option>Lyrics Writing</option>
-        <option>Singing</option>
-        <option>Poetry</option>
-        <option>Rap</option>
-        <option>Spoken Word</option>
-        <option>Content Creation</option>
-        <option>Other</option>
-      </select>
-
-      <label>Which section do you want to join?</label>
-      <select name="section" required>
-        <option value="">Select section</option>
-        <option>Competition Team</option>
-        <option>Creative Team</option>
-        <option>Media Team</option>
-        <option>Management Team</option>
-        <option>General Member</option>
-      </select>
-
-      <label>Why do you want to join LYRICS VIBES TEAM?</label>
-      <textarea name="reason" required></textarea>
-
-      <label>Do you have previous competition experience?</label>
-      <select name="experience" required>
-        <option value="">Select answer</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-
-      <label>Tell us about yourself</label>
-      <textarea name="about" required></textarea>
-
-      <label>Profile Picture</label>
-      <input
-        type="file"
-        name="profilePicture"
-        accept="image/*"
-      >
-
-      <button
-        type="submit"
-        class="submit-btn"
-        id="submitBtn"
-      >
-        SUBMIT APPLICATION
-      </button>
-
-      <div class="loading" id="loadingMessage">
-        Submitting your application...
-      </div>
-
-    </form>
-
-    <div class="success" id="successMessage">
-      ✅ Your application has been submitted successfully.
-      <br><br>
-      Please wait for the LYRICS VIBES TEAM administration to review your application.
     </div>
 
-    <div class="error" id="errorMessage"></div>
 
-  </div>
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html">
+            Members
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="index.html">
+            Competitions
+        </a>
+
+        <a href="#">
+            Events
+        </a>
+
+    </nav>
+
+
+    <button
+        class="menu-btn"
+        onclick="toggleMobileMenu()"
+        aria-label="Open Menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+<!-- =======================================================
+     MOBILE NAV
+======================================================= -->
+
+<div
+    class="mobile-nav"
+    id="mobileNav">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="index.html">
+        Members
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="index.html">
+        Competitions
+    </a>
+
+    <a href="#">
+        Events
+    </a>
+
+</div>
+
+
+<!-- =======================================================
+     APPLY PAGE
+======================================================= -->
+
+<main class="apply-page">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="apply-header">
+
+        <img
+            src="New Project 99 [0AAD052].png"
+            alt="LYRICS VIBES TEAM Logo"
+            class="apply-logo"
+        >
+
+        <h1>
+            Apply to Join
+        </h1>
+
+        <h3>
+            Become Part of LYRICS VIBES TEAM
+        </h3>
+
+        <p>
+            Join our creative community and become part of
+            a team built around creativity, unity and excellence.
+        </p>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div
+        class="apply-container"
+        id="formContainer">
+
+        <div class="form-title">
+            Membership Application
+        </div>
+
+
+        <form id="applicationForm">
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- USERNAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+            </div>
+
+
+            <!-- AGE -->
+
+            <div class="form-group">
+
+                <label>
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    name="age"
+                    min="13"
+                    placeholder="Enter your age"
+                    required
+                >
+
+            </div>
+
+
+            <!-- COUNTRY -->
+
+            <div class="form-group">
+
+                <label>
+                    Country
+                </label>
+
+                <input
+                    type="text"
+                    name="country"
+                    placeholder="Enter your country"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TALENT -->
+
+            <div class="form-group">
+
+                <label>
+                    What is your talent?
+                </label>
+
+                <select
+                    name="talent"
+                    required>
+
+                    <option value="">
+                        Select talent
+                    </option>
+
+                    <option>
+                        Lyrics Writing
+                    </option>
+
+                    <option>
+                        Singing
+                    </option>
+
+                    <option>
+                        Poetry
+                    </option>
+
+                    <option>
+                        Rap
+                    </option>
+
+                    <option>
+                        Spoken Word
+                    </option>
+
+                    <option>
+                        Content Creation
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SECTION -->
+
+            <div class="form-group">
+
+                <label>
+                    Which section do you want to join?
+                </label>
+
+                <select
+                    name="section"
+                    required>
+
+                    <option value="">
+                        Select section
+                    </option>
+
+                    <option>
+                        Competition Team
+                    </option>
+
+                    <option>
+                        Creative Team
+                    </option>
+
+                    <option>
+                        Media Team
+                    </option>
+
+                    <option>
+                        Management Team
+                    </option>
+
+                    <option>
+                        General Member
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- REASON -->
+
+            <div class="form-group">
+
+                <label>
+                    Why do you want to join LYRICS VIBES TEAM?
+                </label>
+
+                <textarea
+                    name="reason"
+                    placeholder="Tell us why you want to join..."
+                    required></textarea>
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="form-group">
+
+                <label>
+                    Do you have previous competition experience?
+                </label>
+
+                <select
+                    name="experience"
+                    required>
+
+                    <option value="">
+                        Select answer
+                    </option>
+
+                    <option>
+                        Yes
+                    </option>
+
+                    <option>
+                        No
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ABOUT -->
+
+            <div class="form-group">
+
+                <label>
+                    Tell us about yourself
+                </label>
+
+                <textarea
+                    name="about"
+                    placeholder="Tell us a little about yourself..."
+                    required></textarea>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Profile Picture
+                </label>
+
+                <input
+                    type="file"
+                    name="profilePicture"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+                id="submitBtn">
+
+                SUBMIT APPLICATION
+
+            </button>
+
+
+            <!-- LOADING -->
+
+            <div
+                class="loading"
+                id="loadingMessage">
+
+                Submitting your application...
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        class="success"
+        id="successMessage">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <div class="success-title">
+            Application Submitted
+        </div>
+
+        Your application has been submitted successfully.
+
+        <br><br>
+
+        Please wait for the
+        <strong>LYRICS VIBES TEAM</strong>
+        administration to review your application.
+
+        <br><br>
+
+        We appreciate your interest in joining our team.
+
+    </div>
+
+
+    <!-- ERROR -->
+
+    <div
+        class="error"
+        id="errorMessage">
+    </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="index.html"
+        class="back-home">
+
+        ← Back to Home
+
+    </a>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    © 2026
+
+    <span>
+        Lyrics Vibes Team
+    </span>
+
+    — All Rights Reserved.
+
+</footer>
 
 
 <script>
 
-  /* ==============================
-     SUPABASE CONNECTION
-  ============================== */
+/* =========================================================
+   SUPABASE CONNECTION
+========================================================= */
 
-  const SUPABASE_URL =
+const SUPABASE_URL =
     "https://lkwllebztakwzfdnusjp.supabase.co";
 
-  /*
-    Ka saka Publishable Key ɗinka a nan.
-    Kada ka saka service_role key.
-  */
-
-  const SUPABASE_KEY =
+const SUPABASE_KEY =
     "sb_publishable_NE_YgiygK0A1L3vvihrjiQ_ymyYDeX6";
 
 
-  const supabaseClient =
+const supabaseClient =
     supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
 
 
-  /* ==============================
-     FORM
-  ============================== */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-  const form =
-    document.getElementById("applicationForm");
+function toggleMobileMenu(){
 
-  const submitBtn =
-    document.getElementById("submitBtn");
+    const menu =
+        document.getElementById("mobileNav");
 
-  const loadingMessage =
-    document.getElementById("loadingMessage");
-
-  const successMessage =
-    document.getElementById("successMessage");
-
-  const errorMessage =
-    document.getElementById("errorMessage");
+    menu.classList.toggle("show");
+}
 
 
-  form.addEventListener("submit", async function(event) {
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
 
-    event.preventDefault();
+const form =
+    document.getElementById(
+        "applicationForm"
+    );
 
-    errorMessage.style.display = "none";
+const submitBtn =
+    document.getElementById(
+        "submitBtn"
+    );
 
-    submitBtn.disabled = true;
+const loadingMessage =
+    document.getElementById(
+        "loadingMessage"
+    );
 
-    loadingMessage.style.display = "block";
+const successMessage =
+    document.getElementById(
+        "successMessage"
+    );
 
-
-    const formData =
-      new FormData(form);
-
-
-    /* ==============================
-       GET FORM VALUES
-    ============================== */
-
-    const fullName =
-      formData.get("fullName");
-
-    const username =
-      formData.get("username");
-
-    const phone =
-      formData.get("phone");
-
-    const email =
-      formData.get("email");
-
-    const age =
-      formData.get("age");
-
-    const country =
-      formData.get("country");
-
-    const talent =
-      formData.get("talent");
-
-    const section =
-      formData.get("section");
-
-    const reason =
-      formData.get("reason");
-
-    const experience =
-      formData.get("experience");
-
-    const about =
-      formData.get("about");
+const errorMessage =
+    document.getElementById(
+        "errorMessage"
+    );
 
 
-    /* ==============================
-       INSERT INTO DATABASE
-    ============================== */
+/* =========================================================
+   FORM SUBMISSION
+========================================================= */
 
-    const { error } =
-  await supabaseClient
-    .from("applications")
-    .insert([
-      {
-        full_name: fullName,
-        username: username,
-        phone: phone,
-        email: email,
-        age: Number(age),
-        country: country,
-        talent: talent,
-        section: section,
-        reason: reason,
-        experience: experience,
-        about: about,
-        status: "pending"
-      }
-    ]);
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
 
 
-    loadingMessage.style.display = "none";
+        /* RESET */
+
+        errorMessage.style.display =
+            "none";
+
+        successMessage.style.display =
+            "none";
+
+        submitBtn.disabled =
+            true;
+
+        loadingMessage.style.display =
+            "block";
 
 
-    /* ==============================
-       ERROR
-    ============================== */
+        /* FORM DATA */
 
-    if (error) {
+        const formData =
+            new FormData(form);
 
-      console.error(error);
 
-      errorMessage.textContent =
-        "❌ Application failed: " +
-        error.message;
+        /* VALUES */
 
-      errorMessage.style.display = "block";
+        const fullName =
+            formData.get("fullName");
 
-      submitBtn.disabled = false;
+        const username =
+            formData.get("username");
 
-      return;
+        const phone =
+            formData.get("phone");
+
+        const email =
+            formData.get("email");
+
+        const age =
+            formData.get("age");
+
+        const country =
+            formData.get("country");
+
+        const talent =
+            formData.get("talent");
+
+        const section =
+            formData.get("section");
+
+        const reason =
+            formData.get("reason");
+
+        const experience =
+            formData.get("experience");
+
+        const about =
+            formData.get("about");
+
+
+        /* =================================================
+           INSERT APPLICATION
+        ================================================= */
+
+        const { data, error } =
+            await supabaseClient
+                .from("applications")
+                .insert([
+                    {
+                        full_name:fullName,
+                        username:username,
+                        phone:phone,
+                        email:email,
+                        age:Number(age),
+                        country:country,
+                        talent:talent,
+                        section:section,
+                        reason:reason,
+                        experience:experience,
+                        about:about,
+                        status:"pending"
+                    }
+                ])
+                .select();
+
+
+        /* STOP LOADING */
+
+        loadingMessage.style.display =
+            "none";
+
+
+        /* =================================================
+           ERROR
+        ================================================= */
+
+        if(error){
+
+            console.error(
+                "Application Error:",
+                error
+            );
+
+            errorMessage.textContent =
+                "❌ Application failed: " +
+                error.message;
+
+            errorMessage.style.display =
+                "block";
+
+            submitBtn.disabled =
+                false;
+
+            return;
+        }
+
+
+        /* =================================================
+           SUCCESS
+        ================================================= */
+
+        console.log(
+            "Application submitted:",
+            data
+        );
+
+
+        form.style.display =
+            "none";
+
+        document.getElementById(
+            "formContainer"
+        ).style.display =
+            "none";
+
+        successMessage.style.display =
+            "block";
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
     }
-
-
-    /* ==============================
-       SUCCESS
-    ============================== */
-
-    form.style.display = "none";
-
-    successMessage.style.display = "block";
-
-
-    console.log(
-      "Application submitted:",
-      data
-    );
-
-  });
+);
 
 </script>
 
