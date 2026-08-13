@@ -1,727 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LYRICS VIBES TEAM</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #071a33;
-            color: white;
-            min-height: 100vh;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background: #050505;
-            border-bottom: 2px solid #d4af37;
-            padding: 15px 6%;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo h2 {
-            color: #d4af37;
-            font-size: 20px;
-        }
-
-        nav {
-            display: flex;
-            gap: 18px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        nav a:hover {
-            color: #d4af37;
-        }
-
-
-        /* =========================
-           HOME PAGE
-        ========================= */
-
-        #homePage {
-            display: block;
-        }
-
-        .hero {
-            min-height: 85vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 40px 20px;
-
-            background: linear-gradient(
-                rgba(4,20,40,.9),
-                rgba(4,20,40,.96)
-            );
-        }
-
-        .hero img {
-            width: 320px;
-            max-width: 85%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 45px;
-            color: #d4af37;
-            margin-bottom: 12px;
-        }
-
-        .hero h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.7;
-            color: #d9e3f0;
-        }
-
-        .buttons {
-            margin-top: 28px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            margin: 6px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .gold {
-            background: #d4af37;
-            color: #071a33;
-        }
-
-        .blue {
-            border: 2px solid #d4af37;
-            color: white;
-        }
-
-        .blue:hover {
-            background: #d4af37;
-            color: #071a33;
-        }
-
-
-        /* =========================
-           WHAT WE DO
-        ========================= */
-
-        .section {
-            padding: 60px 7%;
-            text-align: center;
-        }
-
-        .section h2 {
-            color: #d4af37;
-            margin-bottom: 35px;
-            font-size: 30px;
-        }
-
-        .cards {
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(220px, 1fr)
-                );
-
-            gap: 20px;
-        }
-
-        .card {
-            background: #0d294b;
-            padding: 30px 20px;
-            border-radius: 12px;
-            border: 1px solid #d4af37;
-        }
-
-        .card h3 {
-            color: #d4af37;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #d9e3f0;
-            line-height: 1.6;
-        }
-
-        .card a {
-            color: #d4af37;
-            display: inline-block;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           APPLY
-        ========================= */
-
-        .apply-btn {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 14px 30px;
-            background: #d4af37;
-            color: #071a33;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 7px;
-            border: 2px solid #d4af37;
-        }
-
-        .apply-btn:hover {
-            background: transparent;
-            color: white;
-        }
-
-
-        /* =========================
-           MEMBERS PAGE
-        ========================= */
-
-        #membersPage {
-            display: none;
-            min-height: calc(100vh - 80px);
-            padding: 45px 7%;
-            text-align: center;
-        }
-
-        .members-title {
-            color: #d4af37;
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .members-intro {
-            color: #d9e3f0;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .members-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(180px, 1fr)
-                );
-
-            gap: 15px;
-
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .member-card {
-            background: #0d294b;
-            padding: 18px 14px;
-            border-radius: 9px;
-            border: 1px solid #d4af37;
-            transition: .25s;
-        }
-
-        .member-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .member-icon {
-            width: 55px;
-            height: 55px;
-            margin: 0 auto 9px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            background: #071a33;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 23px;
-        }
-
-        .member-card h3 {
-            color: #d4af37;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .member-id {
-            color: #d9e3f0;
-            font-size: 11px;
-            margin-bottom: 5px;
-        }
-
-        .member-role {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-
-        .member-bio {
-            color: #d9e3f0;
-            font-size: 11px;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-
-        .profile-btn {
-            background: #d4af37;
-            color: #071a33;
-            border: none;
-            padding: 8px 13px;
-            border-radius: 5px;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .profile-btn:hover {
-            opacity: .85;
-        }
-
-
-        /* =========================
-           COMPETITION PAGE
-        ========================= */
-
-        #competitionPage {
-            display: none;
-            min-height: calc(100vh - 80px);
-            padding: 40px 6%;
-        }
-
-        .competition-container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .competition-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .competition-icon {
-            font-size: 40px;
-            margin-bottom: 8px;
-        }
-
-        .competition-header h1 {
-            color: #d4af37;
-            font-size: 32px;
-            margin-bottom: 7px;
-        }
-
-        .competition-header p {
-            color: #d9e3f0;
-            font-size: 14px;
-        }
-
-        .competition-intro {
-            background: #0d294b;
-            border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 18px;
-        }
-
-        .competition-intro h2 {
-            color: #d4af37;
-            font-size: 20px;
-            margin-bottom: 9px;
-        }
-
-        .competition-intro p {
-            color: #d9e3f0;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .competition-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        .competition-card {
-            background: #0d294b;
-            border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 18px;
-        }
-
-        .competition-card h3 {
-            color: #d4af37;
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .competition-card p {
-            color: #d9e3f0;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .competition-box {
-            background: #0d294b;
-            border: 1px solid #d4af37;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 18px;
-        }
-
-        .competition-box h2 {
-            color: #d4af37;
-            font-size: 20px;
-            margin-bottom: 13px;
-        }
-
-        .competition-box p {
-            color: #d9e3f0;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .criteria {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 9px;
-        }
-
-        .criteria-item {
-            background: #071a33;
-            border: 1px solid rgba(212,175,55,.45);
-            border-radius: 7px;
-            padding: 10px;
-            color: #d9e3f0;
-            font-size: 12px;
-        }
-
-        .rules {
-            padding-left: 19px;
-        }
-
-        .rules li {
-            color: #d9e3f0;
-            font-size: 13px;
-            line-height: 1.7;
-            margin-bottom: 6px;
-        }
-
-        .certificate-area {
-            border: 1px dashed #d4af37;
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            margin-top: 14px;
-        }
-
-        .certificate-area h3 {
-            color: #d4af37;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .certificate-area p {
-            color: #aaa;
-            font-size: 12px;
-        }
-
-        .back-home {
-            display: block;
-            width: fit-content;
-            margin: 25px auto 5px;
-
-            padding: 9px 18px;
-
-            border: 1px solid #d4af37;
-            border-radius: 6px;
-
-            color: white;
-            background: transparent;
-
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .back-home:hover {
-            background: #d4af37;
-            color: #071a33;
-        }
-
-
-        /* =========================
-           BACK HOME
-        ========================= */
-
-        .page-back {
-            display: inline-block;
-            margin-top: 28px;
-            padding: 9px 18px;
-            border: 1px solid #d4af37;
-            border-radius: 6px;
-            color: white;
-            background: transparent;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .page-back:hover {
-            background: #d4af37;
-            color: #071a33;
-        }
-
-
-        /* =========================
-           MODALS
-        ========================= */
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.88);
-            z-index: 1000;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 15px;
-        }
-
-        .modal-box {
-            background: #0d294b;
-            border: 2px solid #d4af37;
-            border-radius: 10px;
-            padding: 22px;
-            width: 100%;
-            max-width: 320px;
-            text-align: center;
-        }
-
-        .modal-box h2 {
-            color: #d4af37;
-            font-size: 21px;
-            margin-bottom: 12px;
-        }
-
-        .modal-box p {
-            color: #d9e3f0;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #d4af37;
-            background: #071a33;
-            color: white;
-            outline: none;
-            margin-bottom: 10px;
-            font-size: 13px;
-        }
-
-        .unlock-btn {
-            background: #d4af37;
-            color: #071a33;
-            border: none;
-            padding: 9px 15px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .cancel-btn,
-        .close-btn {
-            background: transparent;
-            color: white;
-            border: 1px solid #d4af37;
-            padding: 8px 13px;
-            border-radius: 5px;
-            font-size: 12px;
-            cursor: pointer;
-            margin-left: 5px;
-        }
-
-        .error {
-            color: #ff7777 !important;
-            display: none;
-        }
-
-        .profile-info {
-            text-align: left;
-            margin-top: 15px;
-        }
-
-        .profile-info p {
-            margin-bottom: 9px;
-            font-size: 13px;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #050505;
-            border-top: 2px solid #d4af37;
-            text-align: center;
-            padding: 22px;
-            color: #aaa;
-            font-size: 13px;
-        }
-
-        footer span {
-            color: #d4af37;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .hero h3 {
-                font-size: 17px;
-            }
-
-            .hero img {
-                width: 260px;
-                max-width: 85%;
-            }
-
-            #membersPage,
-            #competitionPage {
-                padding: 35px 5%;
-            }
-
-            .members-title {
-                font-size: 27px;
-            }
-
-            .members-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .member-card {
-                padding: 15px 9px;
-            }
-
-            .member-card h3 {
-                font-size: 14px;
-            }
-
-            .member-bio {
-                font-size: 10px;
-            }
-
-            .profile-btn {
-                padding: 7px 10px;
-                font-size: 10px;
-            }
-
-            .competition-grid,
-            .criteria {
-                grid-template-columns: 1fr;
-            }
-
-            .competition-header h1 {
-                font-size: 27px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LYRICS VIBES TEAM</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#03152d;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+:root{
+    --navy:#03152d;
+    --navy2:#061d3b;
+    --card:#071f3d;
+    --gold:#e0ad22;
+    --gold2:#f2c43d;
+    --white:#fff;
+    --muted:#c8d2df;
+    --black:#050505;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    width:100%;
+    height:58px;
+    background:#050505;
+    border-bottom:1px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo h2{
+    color:var(--gold);
+    font-size:18px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:27px;
+}
+
+nav a{
+    color:#eee;
+    text-decoration:none;
+    font-size:13px;
+    cursor:pointer;
+    transition:.25s;
+    position:relative;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+nav a.active{
+    color:var(--gold);
+}
+
+nav a.active::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:-17px;
+    width:6px;
+    height:3px;
+    border-radius:5px;
+    background:var(--gold);
+}
+
+/* MOBILE MENU */
+
+.menu-btn{
+    display:none;
+    width:38px;
+    height:34px;
+    border:1px solid rgba(224,173,34,.6);
+    background:transparent;
+    border-radius:6px;
+    cursor:pointer;
+    padding:6px;
+}
+
+.menu-btn span{
+    display:block;
+    height:2px;
+    background:var(--gold);
+    margin:4px 0;
+    border-radius:5px;
+}
+
+.mobile-nav{
+    display:none;
+}
+
+/* =========================================================
+   HOME
+========================================================= */
+
+#homePage{
+    display:block;
+}
+
+.hero{
+    min-height:790px;
+    padding:70px 20px 75px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(14,50,91,.45),
+            transparent 48%
+        ),
+        linear-gradient(
+            180deg,
+            #061b37 0%,
+            #03152d 100%
+        );
+}
+
+.hero-content{
+    width:100%;
+    max-width:720px;
+    margin:auto;
+}
+
+.hero-logo{
+    width:275px;
+    max-width:70%;
+    height:auto;
+    display:block;
+    margin:0 auto 28px;
+}
+
+.hero h1{
+    color:var(--gold2);
+    font-size:48px;
+    line-height:1.1;
+    margin-bottom:18px;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.hero h3{
+    font-size:22px;
+    margin-bottom:22px;
+    color:#f5f5f5;
+}
+
+.hero p{
+    max-width:590px;
+    margin:auto;
+    color:#d3dce7;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.buttons{
+    margin-top:32px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.btn{
+    min-width:190px;
+    padding:14px 24px;
+    border-radius:7px;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:700;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.gold{
+    background:var(--gold2);
+    color:#071a33;
+    border:2px solid var(--gold2);
+}
+
+.gold:hover{
+    background:#ffd45b;
+    transform:translateY(-2px);
+}
+
+.blue{
+    border:2px solid var(--gold);
+    color:#fff;
+    background:transparent;
+}
+
+.blue:hover{
+    background:var(--gold);
+    color:#071a33;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    padding:62px 5% 72px;
+    text-align:center;
+    background:#03152d;
+    border-top:1px solid rgba(255,255,255,.03);
+}
+
+.section-heading{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:13px;
+    margin-bottom:7px;
+}
+
+.section-heading::before,
+.section-heading::after{
+    content:"";
+    width:48px;
+    height:2px;
+    background:var(--gold);
+    opacity:.7;
+}
+
+.section-label{
+    color:var(--gold);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.section h2{
+    color:#fff;
+    font-size:31px;
+    margin-bottom:38px;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards{
+    width:100%;
+    max-width:1120px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    min-height:300px;
+    padding:28px 18px 22px;
+    border-radius:7px;
+    border:1px solid rgba(224,173,34,.18);
+    background:
+        linear-gradient(
+            180deg,
+            #071f3d,
+            #051a34
+        );
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(224,173,34,.65);
+}
+
+.card-icon{
+    font-size:43px;
+    margin-bottom:17px;
+    filter:saturate(.8);
+}
+
+.card h3{
+    color:var(--gold2);
+    font-size:16px;
+    margin-bottom:16px;
+}
+
+.card p{
+    color:#cdd6e1;
+    font-size:12px;
+    line-height:1.7;
+    max-width:190px;
+}
+
+.card a{
+    color:var(--gold2);
+    margin-top:auto;
+    padding-top:20px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.card a:hover{
+    color:#fff;
+}
+
+/* =========================================================
+   APPLY BUTTON
+========================================================= */
+
+.apply-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:245px;
+    margin-top:38px;
+    padding:15px 28px;
+    background:var(--gold2);
+    color:#071a33;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:800;
+    border-radius:7px;
+    border:2px solid var(--gold2);
+    transition:.25s;
+}
+
+.apply-btn:hover{
+    background:transparent;
+    color:#fff;
+}
+
+/* =========================================================
+   GENERAL PAGE
+========================================================= */
+
+.page{
+    display:none;
+    min-height:calc(100vh - 58px);
+    padding:65px 5% 80px;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(10,43,78,.4),
+            transparent 50%
+        ),
+        #03152d;
+}
+
+.page-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.page-title{
+    text-align:center;
+    color:var(--gold2);
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.page-intro{
+    text-align:center;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:40px;
+}
+
+/* =========================================================
+   MEMBERS
+========================================================= */
+
+.members-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.member-card{
+    background:#071f3d;
+    border:1px solid rgba(224,173,34,.2);
+    border-radius:9px;
+    padding:24px 15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.member-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(224,173,34,.65);
+}
+
+.member-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 13px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    background:#03152d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+}
+
+.member-card h3{
+    color:var(--gold2);
+    font-size:16px;
+    margin-bottom:7px;
+}
+
+.member-id{
+    color:#9eabb9;
+    font-size:11px;
+    margin-bottom:6px;
+}
+
+.member-role{
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.member-bio{
+    color:#cbd5e1;
+    font-size:11px;
+    line-height:1.5;
+    min-height:34px;
+}
+
+.profile-btn{
+    margin-top:15px;
+    padding:9px 14px;
+    border:none;
+    border-radius:5px;
+    background:var(--gold2);
+    color:#071a33;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.profile-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   COMPETITION
+========================================================= */
+
+.competition-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.competition-header{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.competition-icon{
+    font-size:48px;
+    margin-bottom:12px;
+}
+
+.competition-header h1{
+    color:var(--gold2);
+    font-size:36px;
+    margin-bottom:9px;
+}
+
+.competition-header p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.competition-intro,
+.competition-card,
+.competition-box{
+    background:#071f3d;
+    border:1px solid rgba(224,173,34,.2);
+    border-radius:9px;
+}
+
+.competition-intro{
+    padding:25px;
+    text-align:center;
+    margin-bottom:17px;
+}
+
+.competition-intro h2,
+.competition-box h2{
+    color:var(--gold2);
+    font-size:20px;
+    margin-bottom:11px;
+}
+
+.competition-intro p,
+.competition-box p{
+    color:#cbd5e1;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.competition-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-bottom:17px;
+}
+
+.competition-card{
+    padding:20px;
+}
+
+.competition-card h3{
+    color:var(--gold2);
+    font-size:15px;
+    margin-bottom:9px;
+}
+
+.competition-card p{
+    color:#cbd5e1;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.competition-box{
+    padding:23px;
+    margin-bottom:17px;
+}
+
+.criteria{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+}
+
+.criteria-item{
+    background:#03152d;
+    border:1px solid rgba(224,173,34,.2);
+    border-radius:6px;
+    padding:11px;
+    color:#d4dce6;
+    font-size:12px;
+}
+
+.rules{
+    padding-left:20px;
+}
+
+.rules li{
+    color:#cbd5e1;
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:6px;
+}
+
+.certificate-area{
+    border:1px dashed var(--gold);
+    border-radius:7px;
+    padding:17px;
+    text-align:center;
+    margin-top:16px;
+}
+
+.certificate-area h3{
+    color:var(--gold2);
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+.certificate-area p{
+    color:#9faaba;
+    font-size:11px;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-home{
+    display:block;
+    margin:30px auto 0;
+    padding:11px 20px;
+    border:1px solid var(--gold);
+    border-radius:6px;
+    background:transparent;
+    color:#fff;
+    cursor:pointer;
+    font-size:13px;
+    transition:.25s;
+}
+
+.back-home:hover{
+    background:var(--gold);
+    color:#071a33;
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    background:rgba(0,0,0,.88);
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal-box{
+    width:100%;
+    max-width:350px;
+    padding:25px 21px;
+    background:#071f3d;
+    border:1px solid var(--gold);
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 20px 70px rgba(0,0,0,.5);
+}
+
+.modal-box h2{
+    color:var(--gold2);
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.modal-box p{
+    color:#cbd5e1;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:12px;
+}
+
+.password-input{
+    width:100%;
+    padding:11px;
+    border-radius:5px;
+    border:1px solid rgba(224,173,34,.8);
+    background:#03152d;
+    color:#fff;
+    outline:none;
+    margin-bottom:10px;
+}
+
+.unlock-btn,
+.cancel-btn,
+.close-btn{
+    padding:9px 14px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.unlock-btn{
+    background:var(--gold2);
+    color:#071a33;
+    border:1px solid var(--gold2);
+}
+
+.cancel-btn,
+.close-btn{
+    background:transparent;
+    color:#fff;
+    border:1px solid var(--gold);
+    margin-left:5px;
+}
+
+.error{
+    color:#ff7777!important;
+    display:none;
+}
+
+.profile-info{
+    text-align:left;
+    margin-top:17px;
+}
+
+.profile-info p{
+    margin-bottom:10px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#050505;
+    border-top:1px solid var(--gold);
+    text-align:center;
+    padding:22px 15px;
+    color:#999;
+    font-size:12px;
+}
+
+footer span{
+    color:var(--gold2);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:950px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        max-width:700px;
+    }
+
+    .members-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    header{
+        height:57px;
+        padding:0 5%;
+    }
+
+    .logo h2{
+        font-size:15px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .mobile-nav{
+        position:fixed;
+        top:57px;
+        left:0;
+        right:0;
+        background:#050505;
+        border-bottom:1px solid var(--gold);
+        padding:12px 5%;
+        z-index:999;
+    }
+
+    .mobile-nav.show{
+        display:block;
+    }
+
+    .mobile-nav a{
+        display:block;
+        padding:12px 5px;
+        color:#fff;
+        text-decoration:none;
+        font-size:14px;
+        border-bottom:1px solid rgba(255,255,255,.05);
+        cursor:pointer;
+    }
+
+    .mobile-nav a:last-child{
+        border-bottom:none;
+    }
+
+    .mobile-nav a:hover{
+        color:var(--gold);
+    }
+
+    .hero{
+        min-height:auto;
+        padding:65px 18px 75px;
+    }
+
+    .hero-logo{
+        width:230px;
+        max-width:75%;
+        margin-bottom:25px;
+    }
+
+    .hero h1{
+        font-size:34px;
+        line-height:1.15;
+    }
+
+    .hero h3{
+        font-size:17px;
+        margin-bottom:18px;
+    }
+
+    .hero p{
+        font-size:14px;
+        line-height:1.75;
+    }
+
+    .buttons{
+        flex-direction:column;
+        width:100%;
+        margin-top:27px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:280px;
+    }
+
+    .section{
+        padding:50px 15px 60px;
+    }
+
+    .section h2{
+        font-size:27px;
+        margin-bottom:28px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .card{
+        min-height:265px;
+        padding:22px 10px 18px;
+    }
+
+    .card-icon{
+        font-size:35px;
+    }
+
+    .card h3{
+        font-size:14px;
+    }
+
+    .card p{
+        font-size:10px;
+    }
+
+    .card a{
+        font-size:10px;
+    }
+
+    .apply-btn{
+        width:90%;
+        max-width:280px;
+    }
+
+    .page{
+        padding:48px 12px 65px;
+    }
+
+    .page-title{
+        font-size:28px;
+    }
+
+    .page-intro{
+        font-size:12px;
+        margin-bottom:28px;
+    }
+
+    .members-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .member-card{
+        padding:17px 9px;
+    }
+
+    .member-icon{
+        width:52px;
+        height:52px;
+        font-size:22px;
+    }
+
+    .member-card h3{
+        font-size:13px;
+    }
+
+    .member-bio{
+        font-size:9px;
+    }
+
+    .profile-btn{
+        font-size:9px;
+        padding:7px 9px;
+    }
+
+    .competition-header h1{
+        font-size:27px;
+    }
+
+    .competition-icon{
+        font-size:40px;
+    }
+
+    .competition-grid{
+        grid-template-columns:1fr;
+    }
+
+    .criteria{
+        grid-template-columns:1fr;
+    }
+
+    .competition-intro,
+    .competition-card,
+    .competition-box{
+        padding:18px;
+    }
+
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    .logo h2{
+        font-size:13px;
+    }
+
+    .hero{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .hero-logo{
+        width:200px;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .hero h3{
+        font-size:15px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .cards{
+        gap:8px;
+    }
+
+    .card{
+        min-height:250px;
+        padding:18px 7px;
+    }
+
+    .card-icon{
+        font-size:30px;
+    }
+
+    .card h3{
+        font-size:12px;
+    }
+
+    .card p{
+        font-size:9px;
+    }
+
+    .members-grid{
+        gap:7px;
+    }
+
+    .member-card{
+        padding:14px 6px;
+    }
+
+    .member-card h3{
+        font-size:11px;
+    }
+
+}
+
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media(min-width:1400px){
+
+    .hero{
+        min-height:850px;
+    }
+
+    .hero h1{
+        font-size:54px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .cards{
+        max-width:1200px;
+    }
+
+}
+
+</style>
 </head>
-
 
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
      HEADER
-========================= -->
+======================================================= -->
 
 <header>
 
     <div class="logo">
-
-        <h2>
-            LYRICS VIBES TEAM
-        </h2>
-
+        <h2>LYRICS VIBES TEAM</h2>
     </div>
-
 
     <nav>
 
-        <a onclick="showHome()">
+        <a onclick="showHome()" id="desktopHome">
             Home
         </a>
 
-        <a onclick="showMembers()">
+        <a onclick="showMembers()" id="desktopMembers">
             Members
         </a>
 
@@ -739,35 +1099,71 @@
 
     </nav>
 
+    <button
+        class="menu-btn"
+        onclick="toggleMobileMenu()"
+        aria-label="Open Menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
 </header>
 
 
+<!-- MOBILE NAV -->
 
-<!-- =========================
+<div
+    class="mobile-nav"
+    id="mobileNav">
+
+    <a onclick="mobileGo('home')">
+        Home
+    </a>
+
+    <a onclick="mobileGo('members')">
+        Members
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a onclick="mobileGo('competition')">
+        Competitions
+    </a>
+
+    <a href="#">
+        Events
+    </a>
+
+</div>
+
+
+<!-- =======================================================
      HOME PAGE
-========================= -->
+======================================================= -->
 
 <div id="homePage">
 
-
     <section class="hero">
 
-        <div>
+        <div class="hero-content">
 
             <img
                 src="New Project 99 [0AAD052].png"
-                alt="Lyrics Vibes Team">
-
+                alt="Lyrics Vibes Team Logo"
+                class="hero-logo">
 
             <h1>
                 LYRICS VIBES TEAM
             </h1>
 
-
             <h3>
                 Creativity • Unity • Excellence
             </h3>
-
 
             <p>
                 Welcome to the official website of Lyrics Vibes Team —
@@ -775,9 +1171,7 @@
                 Design, Tutorials and Competition.
             </p>
 
-
             <div class="buttons">
-
 
                 <a
                     class="btn gold"
@@ -786,7 +1180,6 @@
                     Explore Members
 
                 </a>
-
 
                 <a
                     href="about.html"
@@ -803,10 +1196,15 @@
     </section>
 
 
-
     <!-- WHAT WE DO -->
 
     <section class="section">
+
+        <div class="section-heading">
+            <span class="section-label">
+                What We Do
+            </span>
+        </div>
 
         <h2>
             What We Do
@@ -816,10 +1214,16 @@
         <div class="cards">
 
 
+            <!-- MEMBERS -->
+
             <div class="card">
 
+                <div class="card-icon">
+                    👥
+                </div>
+
                 <h3>
-                    👥 Members
+                    Members
                 </h3>
 
                 <p>
@@ -827,21 +1231,23 @@
                     their membership through QR Code.
                 </p>
 
-                <a
-                    onclick="showMembers()">
-
-                    View Members
-
+                <a onclick="showMembers()">
+                    View Members →
                 </a>
 
             </div>
 
 
+            <!-- COMPETITIONS -->
 
             <div class="card">
 
+                <div class="card-icon">
+                    🏆
+                </div>
+
                 <h3>
-                    🏆 Competitions
+                    Competitions
                 </h3>
 
                 <p>
@@ -850,42 +1256,57 @@
                     into amazing videos.
                 </p>
 
-                <a
-                    onclick="showCompetition()">
-
-                    View Competition
-
+                <a onclick="showCompetition()">
+                    View Competition →
                 </a>
 
             </div>
 
 
+            <!-- TUTORIALS -->
 
             <div class="card">
 
+                <div class="card-icon">
+                    📖
+                </div>
+
                 <h3>
-                    📚 Tutorials
+                    Tutorials
                 </h3>
 
                 <p>
-                    Learn Lyrics, Editing, Design and
-                    other creative skills.
+                    Learn Lyrics, Editing, Design and other
+                    creative skills.
                 </p>
+
+                <a href="#">
+                    Explore Tutorials →
+                </a>
 
             </div>
 
 
+            <!-- EVENTS -->
 
             <div class="card">
 
+                <div class="card-icon">
+                    📅
+                </div>
+
                 <h3>
-                    📅 Events
+                    Events
                 </h3>
 
                 <p>
-                    Stay updated with our upcoming
-                    events and activities.
+                    Stay updated with our upcoming events
+                    and activities.
                 </p>
+
+                <a href="#">
+                    View Events →
+                </a>
 
             </div>
 
@@ -905,243 +1326,242 @@
 </div>
 
 
-
-<!-- =========================
+<!-- =======================================================
      MEMBERS PAGE
-========================= -->
+======================================================= -->
 
-<div id="membersPage">
+<div
+    id="membersPage"
+    class="page">
+
+    <div class="page-container">
+
+        <h1 class="page-title">
+            Explore Members
+        </h1>
+
+        <p class="page-intro">
+            Meet the official members of Lyrics Vibes Team.
+        </p>
 
 
-    <h1 class="members-title">
-        Explore Members
-    </h1>
+        <div class="members-grid">
 
 
-    <p class="members-intro">
-        Meet the official members of Lyrics Vibes Team.
-    </p>
+            <div class="member-card">
 
+                <div class="member-icon">
+                    👤
+                </div>
 
-    <div class="members-grid">
+                <h3>
+                    Abba Master
+                </h3>
 
+                <p class="member-id">
+                    Member ID: LTV001
+                </p>
 
-        <div class="member-card">
+                <p class="member-role">
+                    Admin
+                </p>
 
-            <div class="member-icon">
-                👤
+                <p class="member-bio">
+                    Creative video editor and designer.
+                </p>
+
+                <button
+                    class="profile-btn"
+                    onclick="openProfile(
+                        'Abba Master',
+                        'LTV001',
+                        'Admin',
+                        'Creative video editor and designer.'
+                    )">
+
+                    View Profile
+
+                </button>
+
             </div>
 
-            <h3>
-                Abba Master
-            </h3>
 
-            <p class="member-id">
-                Member ID: LTV001
-            </p>
+            <div class="member-card">
 
-            <p class="member-role">
-                Admin
-            </p>
+                <div class="member-icon">
+                    👤
+                </div>
 
-            <p class="member-bio">
-                Creative video editor and designer.
-            </p>
+                <h3>
+                    Honourable
+                </h3>
 
-            <button
-                class="profile-btn"
-                onclick="openProfile(
-                    'Abba Master',
-                    'LTV001',
-                    'Admin',
-                    'Creative video editor and designer.'
-                )">
+                <p class="member-id">
+                    Member ID: LTV002
+                </p>
 
-                View Profile
+                <p class="member-role">
+                    Admin
+                </p>
 
-            </button>
+                <p class="member-bio">
+                    Creative video editor and designer.
+                </p>
+
+                <button
+                    class="profile-btn"
+                    onclick="openProfile(
+                        'Honourable',
+                        'LTV002',
+                        'Admin',
+                        'Creative video editor and designer.'
+                    )">
+
+                    View Profile
+
+                </button>
+
+            </div>
+
+
+            <div class="member-card">
+
+                <div class="member-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Abba Miloniya
+                </h3>
+
+                <p class="member-id">
+                    Member ID: LTV003
+                </p>
+
+                <p class="member-role">
+                    Admin
+                </p>
+
+                <p class="member-bio">
+                    Creative video editor and designer.
+                </p>
+
+                <button
+                    class="profile-btn"
+                    onclick="openProfile(
+                        'Abba Miloniya',
+                        'LTV003',
+                        'Admin',
+                        'Creative video editor and designer.'
+                    )">
+
+                    View Profile
+
+                </button>
+
+            </div>
+
+
+            <div class="member-card">
+
+                <div class="member-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Sayyada Lyrics
+                </h3>
+
+                <p class="member-id">
+                    Member ID: LTV004
+                </p>
+
+                <p class="member-role">
+                    Admin
+                </p>
+
+                <p class="member-bio">
+                    Creative video editor and designer.
+                </p>
+
+                <button
+                    class="profile-btn"
+                    onclick="openProfile(
+                        'Sayyada Lyrics',
+                        'LTV004',
+                        'Admin',
+                        'Creative video editor and designer.'
+                    )">
+
+                    View Profile
+
+                </button>
+
+            </div>
+
+
+            <div class="member-card">
+
+                <div class="member-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Siyamah Lyrics
+                </h3>
+
+                <p class="member-id">
+                    Member ID: LTV005
+                </p>
+
+                <p class="member-role">
+                    Admin
+                </p>
+
+                <p class="member-bio">
+                    Creative video editor and designer.
+                </p>
+
+                <button
+                    class="profile-btn"
+                    onclick="openProfile(
+                        'Siyamah Lyrics',
+                        'LTV005',
+                        'Admin',
+                        'Creative video editor and designer.'
+                    )">
+
+                    View Profile
+
+                </button>
+
+            </div>
 
         </div>
 
 
+        <button
+            class="back-home"
+            onclick="showHome()">
 
-        <div class="member-card">
+            ← Back to Home
 
-            <div class="member-icon">
-                👤
-            </div>
-
-            <h3>
-                Honourable
-            </h3>
-
-            <p class="member-id">
-                Member ID: LTV002
-            </p>
-
-            <p class="member-role">
-                Admin
-            </p>
-
-            <p class="member-bio">
-                Creative video editor and designer.
-            </p>
-
-            <button
-                class="profile-btn"
-                onclick="openProfile(
-                    'Honourable',
-                    'LTV002',
-                    'Admin',
-                    'Creative video editor and designer.'
-                )">
-
-                View Profile
-
-            </button>
-
-        </div>
-
-
-
-        <div class="member-card">
-
-            <div class="member-icon">
-                👤
-            </div>
-
-            <h3>
-                Abba Miloniya
-            </h3>
-
-            <p class="member-id">
-                Member ID: LTV003
-            </p>
-
-            <p class="member-role">
-                Admin
-            </p>
-
-            <p class="member-bio">
-                Creative video editor and designer.
-            </p>
-
-            <button
-                class="profile-btn"
-                onclick="openProfile(
-                    'Abba Miloniya',
-                    'LTV003',
-                    'Admin',
-                    'Creative video editor and designer.'
-                )">
-
-                View Profile
-
-            </button>
-
-        </div>
-
-
-
-        <div class="member-card">
-
-            <div class="member-icon">
-                👤
-            </div>
-
-            <h3>
-                Sayyada Lyrics
-            </h3>
-
-            <p class="member-id">
-                Member ID: LTV004
-            </p>
-
-            <p class="member-role">
-                Admin
-            </p>
-
-            <p class="member-bio">
-                Creative video editor and designer.
-            </p>
-
-            <button
-                class="profile-btn"
-                onclick="openProfile(
-                    'Sayyada Lyrics',
-                    'LTV004',
-                    'Admin',
-                    'Creative video editor and designer.'
-                )">
-
-                View Profile
-
-            </button>
-
-        </div>
-
-
-
-        <div class="member-card">
-
-            <div class="member-icon">
-                👤
-            </div>
-
-            <h3>
-                Siyamah Lyrics
-            </h3>
-
-            <p class="member-id">
-                Member ID: LTV005
-            </p>
-
-            <p class="member-role">
-                Admin
-            </p>
-
-            <p class="member-bio">
-                Creative video editor and designer.
-            </p>
-
-            <button
-                class="profile-btn"
-                onclick="openProfile(
-                    'Siyamah Lyrics',
-                    'LTV005',
-                    'Admin',
-                    'Creative video editor and designer.'
-                )">
-
-                View Profile
-
-            </button>
-
-        </div>
+        </button>
 
     </div>
-
-
-    <button
-        class="back-home"
-        onclick="showHome()">
-
-        ← Back to Home
-
-    </button>
 
 </div>
 
 
-
-<!-- =========================
+<!-- =======================================================
      COMPETITION PAGE
-========================= -->
+======================================================= -->
 
-<div id="competitionPage">
+<div
+    id="competitionPage"
+    class="page">
 
     <div class="competition-container">
-
 
         <div class="competition-header">
 
@@ -1160,7 +1580,6 @@
         </div>
 
 
-
         <div class="competition-intro">
 
             <h2>
@@ -1176,9 +1595,7 @@
         </div>
 
 
-
         <div class="competition-grid">
-
 
             <div class="competition-card">
 
@@ -1192,7 +1609,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="competition-card">
@@ -1209,7 +1625,6 @@
             </div>
 
 
-
             <div class="competition-card">
 
                 <h3>
@@ -1222,7 +1637,6 @@
                 </p>
 
             </div>
-
 
 
             <div class="competition-card">
@@ -1241,7 +1655,6 @@
         </div>
 
 
-
         <div class="competition-box">
 
             <h2>
@@ -1257,7 +1670,6 @@
             </p>
 
         </div>
-
 
 
         <div class="competition-box">
@@ -1297,7 +1709,6 @@
         </div>
 
 
-
         <div class="competition-box">
 
             <h2>
@@ -1313,7 +1724,6 @@
         </div>
 
 
-
         <div class="competition-box">
 
             <h2>
@@ -1325,7 +1735,6 @@
                 along with other prizes and recognition prepared
                 for the competition.
             </p>
-
 
             <div class="certificate-area">
 
@@ -1340,7 +1749,6 @@
             </div>
 
         </div>
-
 
 
         <div class="competition-box">
@@ -1378,7 +1786,6 @@
         </div>
 
 
-
         <button
             class="back-home"
             onclick="showHome()">
@@ -1392,10 +1799,9 @@
 </div>
 
 
-
-<!-- =========================
+<!-- =======================================================
      PASSWORD MODAL
-========================= -->
+======================================================= -->
 
 <div
     class="modal"
@@ -1446,10 +1852,9 @@
 </div>
 
 
-
-<!-- =========================
+<!-- =======================================================
      PROFILE MODAL
-========================= -->
+======================================================= -->
 
 <div
     class="modal"
@@ -1493,8 +1898,9 @@
 </div>
 
 
-
-<!-- FOOTER -->
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
@@ -1509,267 +1915,265 @@
 </footer>
 
 
-
 <script>
 
-    /* =========================
-       PAGE NAVIGATION
-    ========================= */
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
 
-    function hideAllPages() {
+function hideAllPages(){
 
-        document.getElementById(
-            "homePage"
-        ).style.display = "none";
+    document.getElementById("homePage").style.display = "none";
 
-        document.getElementById(
-            "membersPage"
-        ).style.display = "none";
+    document.getElementById("membersPage").style.display = "none";
 
-        document.getElementById(
-            "competitionPage"
-        ).style.display = "none";
+    document.getElementById("competitionPage").style.display = "none";
+}
 
+
+function showHome(){
+
+    hideAllPages();
+
+    document.getElementById("homePage").style.display = "block";
+
+    closeMobileMenu();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function showMembers(){
+
+    hideAllPages();
+
+    document.getElementById("membersPage").style.display = "block";
+
+    closeMobileMenu();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function showCompetition(){
+
+    hideAllPages();
+
+    document.getElementById("competitionPage").style.display = "block";
+
+    closeMobileMenu();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMobileMenu(){
+
+    const menu =
+        document.getElementById("mobileNav");
+
+    menu.classList.toggle("show");
+}
+
+
+function closeMobileMenu(){
+
+    document
+        .getElementById("mobileNav")
+        .classList.remove("show");
+}
+
+
+function mobileGo(page){
+
+    closeMobileMenu();
+
+    if(page === "home"){
+        showHome();
     }
 
-
-    function showHome() {
-
-        hideAllPages();
-
-        document.getElementById(
-            "homePage"
-        ).style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
+    if(page === "members"){
+        showMembers();
     }
 
-
-    function showMembers() {
-
-        hideAllPages();
-
-        document.getElementById(
-            "membersPage"
-        ).style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
+    if(page === "competition"){
+        showCompetition();
     }
+}
 
 
-    function showCompetition() {
+/* =========================================================
+   MEMBER PASSWORD
+========================================================= */
 
-        hideAllPages();
+const MEMBER_PASSWORD = "LVT2025";
 
-        document.getElementById(
-            "competitionPage"
-        ).style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
+let selectedMember = null;
 
 
+function openProfile(
+    name,
+    id,
+    role,
+    bio
+){
 
-    /* =========================
-       PASSWORD
-    ========================= */
-
-    const MEMBER_PASSWORD = "LVT2025";
-
-    let selectedMember = null;
-
-
-    function openProfile(
-        name,
-        id,
-        role,
-        bio
-    ) {
-
-        selectedMember = {
-            name: name,
-            id: id,
-            role: role,
-            bio: bio
-        };
-
-
-        document.getElementById(
-            "passwordInput"
-        ).value = "";
-
-
-        document.getElementById(
-            "passwordError"
-        ).style.display = "none";
-
-
-        document.getElementById(
-            "passwordModal"
-        ).style.display = "flex";
-
-
-        setTimeout(function() {
-
-            document.getElementById(
-                "passwordInput"
-            ).focus();
-
-        }, 100);
-
-    }
-
-
-
-    function checkPassword() {
-
-        const enteredPassword =
-            document.getElementById(
-                "passwordInput"
-            ).value;
-
-
-        if (
-            enteredPassword ===
-            MEMBER_PASSWORD
-        ) {
-
-            document.getElementById(
-                "passwordModal"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "profileName"
-            ).textContent =
-                selectedMember.name;
-
-
-            document.getElementById(
-                "profileId"
-            ).textContent =
-                selectedMember.id;
-
-
-            document.getElementById(
-                "profileRole"
-            ).textContent =
-                selectedMember.role;
-
-
-            document.getElementById(
-                "profileBio"
-            ).textContent =
-                selectedMember.bio;
-
-
-            document.getElementById(
-                "profileModal"
-            ).style.display = "flex";
-
-        }
-
-        else {
-
-            document.getElementById(
-                "passwordError"
-            ).style.display = "block";
-
-        }
-
-    }
-
-
-
-    function closePassword() {
-
-        document.getElementById(
-            "passwordModal"
-        ).style.display = "none";
-
-    }
-
-
-
-    function closeProfile() {
-
-        document.getElementById(
-            "profileModal"
-        ).style.display = "none";
-
-    }
-
-
+    selectedMember = {
+        name:name,
+        id:id,
+        role:role,
+        bio:bio
+    };
 
     document.getElementById(
         "passwordInput"
-    ).addEventListener(
-        "keydown",
-        function(event) {
+    ).value = "";
 
-            if (event.key === "Enter") {
+    document.getElementById(
+        "passwordError"
+    ).style.display = "none";
 
-                checkPassword();
+    document.getElementById(
+        "passwordModal"
+    ).style.display = "flex";
 
-            }
+    setTimeout(function(){
 
+        document.getElementById(
+            "passwordInput"
+        ).focus();
+
+    },100);
+}
+
+
+function checkPassword(){
+
+    const enteredPassword =
+        document.getElementById(
+            "passwordInput"
+        ).value;
+
+    if(
+        enteredPassword ===
+        MEMBER_PASSWORD
+    ){
+
+        document.getElementById(
+            "passwordModal"
+        ).style.display = "none";
+
+        document.getElementById(
+            "profileName"
+        ).textContent =
+            selectedMember.name;
+
+        document.getElementById(
+            "profileId"
+        ).textContent =
+            selectedMember.id;
+
+        document.getElementById(
+            "profileRole"
+        ).textContent =
+            selectedMember.role;
+
+        document.getElementById(
+            "profileBio"
+        ).textContent =
+            selectedMember.bio;
+
+        document.getElementById(
+            "profileModal"
+        ).style.display = "flex";
+
+    }else{
+
+        document.getElementById(
+            "passwordError"
+        ).style.display = "block";
+
+    }
+}
+
+
+function closePassword(){
+
+    document.getElementById(
+        "passwordModal"
+    ).style.display = "none";
+}
+
+
+function closeProfile(){
+
+    document.getElementById(
+        "profileModal"
+    ).style.display = "none";
+}
+
+
+/* =========================================================
+   ENTER PASSWORD
+========================================================= */
+
+document.getElementById(
+    "passwordInput"
+).addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            checkPassword();
         }
-    );
+
+    }
+);
 
 
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
 
-    window.addEventListener(
-        "click",
-        function(event) {
+window.addEventListener(
+    "click",
+    function(event){
 
-            const passwordModal =
-                document.getElementById(
-                    "passwordModal"
-                );
+        const passwordModal =
+            document.getElementById(
+                "passwordModal"
+            );
 
+        const profileModal =
+            document.getElementById(
+                "profileModal"
+            );
 
-            const profileModal =
-                document.getElementById(
-                    "profileModal"
-                );
-
-
-            if (
-                event.target ===
-                passwordModal
-            ) {
-
-                closePassword();
-
-            }
-
-
-            if (
-                event.target ===
-                profileModal
-            ) {
-
-                closeProfile();
-
-            }
-
+        if(event.target === passwordModal){
+            closePassword();
         }
-    );
+
+        if(event.target === profileModal){
+            closeProfile();
+        }
+
+    }
+);
 
 </script>
-
 
 </body>
 </html>
