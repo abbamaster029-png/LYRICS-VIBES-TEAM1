@@ -10,13 +10,13 @@
   "background_color": "#03152d",
   "icons": [
     {
-      "src": "lvt-icon-192.png",
+      "src": "lvt-icon-192-2.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "lvt-icon-512.png",
+      "src": "lvt-icon-512-1.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
