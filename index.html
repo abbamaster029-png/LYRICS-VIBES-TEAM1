@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>LYRICS VIBES TEAM</title>
+
+<!-- PWA MANIFEST -->
+<link rel="manifest" href="manifest.json">
+
+<!-- PWA THEME -->
+<meta name="theme-color" content="#03152d">
+
+<!-- APP ICON -->
+<link rel="icon" type="image/png" href="lvt-icons192.png">
 
 <style>
 
@@ -105,8 +117,6 @@ nav a.active::after{
     border-radius:5px;
     background:var(--gold);
 }
-
-/* MOBILE MENU */
 
 .menu-btn{
     display:none;
@@ -1064,11 +1074,6 @@ footer span{
 
 <body>
 
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
-
 <header>
 
     <div class="logo">
@@ -1112,9 +1117,6 @@ footer span{
 
 </header>
 
-
-<!-- MOBILE NAV -->
-
 <div
     class="mobile-nav"
     id="mobileNav">
@@ -1142,9 +1144,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     HOME PAGE
-======================================================= -->
+<!-- HOME -->
 
 <div id="homePage">
 
@@ -1196,14 +1196,14 @@ footer span{
     </section>
 
 
-    <!-- WHAT WE DO -->
-
     <section class="section">
 
         <div class="section-heading">
+
             <span class="section-label">
                 What We Do
             </span>
+
         </div>
 
         <h2>
@@ -1212,9 +1212,6 @@ footer span{
 
 
         <div class="cards">
-
-
-            <!-- MEMBERS -->
 
             <div class="card">
 
@@ -1237,8 +1234,6 @@ footer span{
 
             </div>
 
-
-            <!-- COMPETITIONS -->
 
             <div class="card">
 
@@ -1263,8 +1258,6 @@ footer span{
             </div>
 
 
-            <!-- TUTORIALS -->
-
             <div class="card">
 
                 <div class="card-icon">
@@ -1286,8 +1279,6 @@ footer span{
 
             </div>
 
-
-            <!-- EVENTS -->
 
             <div class="card">
 
@@ -1326,9 +1317,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     MEMBERS PAGE
-======================================================= -->
+<!-- MEMBERS -->
 
 <div
     id="membersPage"
@@ -1346,7 +1335,6 @@ footer span{
 
 
         <div class="members-grid">
-
 
             <div class="member-card">
 
@@ -1553,9 +1541,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     COMPETITION PAGE
-======================================================= -->
+<!-- COMPETITION -->
 
 <div
     id="competitionPage"
@@ -1799,9 +1785,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     PASSWORD MODAL
-======================================================= -->
+<!-- PASSWORD MODAL -->
 
 <div
     class="modal"
@@ -1852,9 +1836,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     PROFILE MODAL
-======================================================= -->
+<!-- PROFILE MODAL -->
 
 <div
     class="modal"
@@ -1898,9 +1880,7 @@ footer span{
 </div>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -2126,10 +2106,6 @@ function closeProfile(){
 }
 
 
-/* =========================================================
-   ENTER PASSWORD
-========================================================= */
-
 document.getElementById(
     "passwordInput"
 ).addEventListener(
@@ -2143,10 +2119,6 @@ document.getElementById(
     }
 );
 
-
-/* =========================================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
-========================================================= */
 
 window.addEventListener(
     "click",
@@ -2172,6 +2144,37 @@ window.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   PWA SERVICE WORKER
+========================================================= */
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load", function(){
+
+        navigator.serviceWorker
+            .register("service-worker.js")
+            .then(function(){
+
+                console.log(
+                    "LYRICS VIBES TEAM PWA is ready."
+                );
+
+            })
+            .catch(function(error){
+
+                console.error(
+                    "Service Worker registration failed:",
+                    error
+                );
+
+            });
+
+    });
+
+}
 
 </script>
 
