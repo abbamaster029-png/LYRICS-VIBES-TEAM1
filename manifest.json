@@ -1,13 +1,13 @@
 {
   "name": "LYRICS VIBES TEAM",
   "short_name": "LVT",
-  "description": "Official LYRICS VIBES TEAM creative community.",
-  "start_url": "./index.html",
+  "description": "Official LYRICS VIBES TEAM website",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#03152d",
   "background_color": "#03152d",
+  "theme_color": "#03152d",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "lvt-icon-192-2.png",
@@ -16,7 +16,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "lvt-icon-512-1.png",
+      "src": "lvt-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
