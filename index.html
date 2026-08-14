@@ -1,3160 +1,911 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LYRICS VIBES TEAM</title>
-
 <link rel="manifest" href="manifest.json">
-
 <meta name="theme-color" content="#03152d">
-
 <link rel="icon" type="image/png" href="lvt-icon-192-2.png">
 
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#03152d;
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
-}
-
-:root{
-    --navy:#03152d;
-    --navy2:#061d3b;
-    --card:#071f3d;
-    --gold:#e0ad22;
-    --gold2:#f2c43d;
-    --white:#fff;
-    --muted:#c8d2df;
-    --black:#050505;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    width:100%;
-    height:58px;
-    background:#050505;
-    border-bottom:1px solid var(--gold);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 5%;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-}
-
-.logo h2{
-    color:var(--gold);
-    font-size:18px;
-    font-weight:700;
-    white-space:nowrap;
-}
-
-nav{
-    display:flex;
-    align-items:center;
-    gap:27px;
-}
-
-nav a{
-    color:#eee;
-    text-decoration:none;
-    font-size:13px;
-    cursor:pointer;
-    transition:.25s;
-    position:relative;
-}
-
-nav a:hover{
-    color:var(--gold);
-}
-
-nav a.active{
-    color:var(--gold);
-}
-
-nav a.active::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:-17px;
-    width:6px;
-    height:3px;
-    border-radius:5px;
-    background:var(--gold);
-}
-
-.menu-btn{
-    display:none;
-    width:38px;
-    height:34px;
-    border:1px solid rgba(224,173,34,.6);
-    background:transparent;
-    border-radius:6px;
-    cursor:pointer;
-    padding:6px;
-}
-
-.menu-btn span{
-    display:block;
-    height:2px;
-    background:var(--gold);
-    margin:4px 0;
-    border-radius:5px;
-}
-
-.mobile-nav{
-    display:none;
-}
-
-/* =========================================================
-   HOME
-========================================================= */
-
-#homePage{
-    display:block;
-}
-
-.hero{
-    min-height:790px;
-    padding:70px 20px 75px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(14,50,91,.45),
-            transparent 48%
-        ),
-        linear-gradient(
-            180deg,
-            #061b37 0%,
-            #03152d 100%
-        );
-}
-
-.hero-content{
-    width:100%;
-    max-width:720px;
-    margin:auto;
-}
-
-.hero-logo{
-    width:275px;
-    max-width:70%;
-    height:auto;
-    display:block;
-    margin:0 auto 28px;
-}
-
-.hero h1{
-    color:var(--gold2);
-    font-size:48px;
-    line-height:1.1;
-    margin-bottom:18px;
-    font-weight:800;
-    letter-spacing:.3px;
-}
-
-.hero h3{
-    font-size:22px;
-    margin-bottom:22px;
-    color:#f5f5f5;
-}
-
-.hero p{
-    max-width:590px;
-    margin:auto;
-    color:#d3dce7;
-    line-height:1.8;
-    font-size:16px;
-}
-
-.buttons{
-    margin-top:32px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.btn{
-    min-width:190px;
-    padding:14px 24px;
-    border-radius:7px;
-    text-decoration:none;
-    font-size:15px;
-    font-weight:700;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.gold{
-    background:var(--gold2);
-    color:#071a33;
-    border:2px solid var(--gold2);
-}
-
-.gold:hover{
-    background:#ffd45b;
-    transform:translateY(-2px);
-}
-
-.blue{
-    border:2px solid var(--gold);
-    color:#fff;
-    background:transparent;
-}
-
-.blue:hover{
-    background:var(--gold);
-    color:#071a33;
-}
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.section{
-    padding:62px 5% 72px;
-    text-align:center;
-    background:#03152d;
-    border-top:1px solid rgba(255,255,255,.03);
-}
-
-.section-heading{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:13px;
-    margin-bottom:7px;
-}
-
-.section-heading::before,
-.section-heading::after{
-    content:"";
-    width:48px;
-    height:2px;
-    background:var(--gold);
-    opacity:.7;
-}
-
-.section-label{
-    color:var(--gold);
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.section h2{
-    color:#fff;
-    font-size:31px;
-    margin-bottom:38px;
-}
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.cards{
-    width:100%;
-    max-width:1120px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.card{
-    min-height:300px;
-    padding:28px 18px 22px;
-    border-radius:7px;
-    border:1px solid rgba(224,173,34,.18);
-    background:
-        linear-gradient(
-            180deg,
-            #071f3d,
-            #051a34
-        );
-    transition:.3s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(224,173,34,.65);
-}
-
-.card-icon{
-    font-size:43px;
-    margin-bottom:17px;
-}
-
-.card h3{
-    color:var(--gold2);
-    font-size:16px;
-    margin-bottom:16px;
-}
-
-.card p{
-    color:#cdd6e1;
-    font-size:12px;
-    line-height:1.7;
-    max-width:190px;
-}
-
-.card a{
-    color:var(--gold2);
-    margin-top:auto;
-    padding-top:20px;
-    text-decoration:none;
-    font-size:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.card a:hover{
-    color:#fff;
-}
-
-/* =========================================================
-   APPLY BUTTON
-========================================================= */
-
-.apply-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:245px;
-    margin-top:38px;
-    padding:15px 28px;
-    background:var(--gold2);
-    color:#071a33;
-    text-decoration:none;
-    font-size:15px;
-    font-weight:800;
-    border-radius:7px;
-    border:2px solid var(--gold2);
-    transition:.25s;
-}
-
-.apply-btn:hover{
-    background:transparent;
-    color:#fff;
-}
-
-/* =========================================================
-   GENERAL PAGE
-========================================================= */
-
-.page{
-    display:none;
-    min-height:calc(100vh - 58px);
-    padding:65px 5% 80px;
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(10,43,78,.4),
-            transparent 50%
-        ),
-        #03152d;
-}
-
-.page-container{
-    max-width:1100px;
-    margin:auto;
-}
-
-.page-title{
-    text-align:center;
-    color:var(--gold2);
-    font-size:36px;
-    margin-bottom:10px;
-}
-
-.page-intro{
-    text-align:center;
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.6;
-    margin-bottom:40px;
-}
-
-/* =========================================================
-   MEMBERS
-========================================================= */
-
-.members-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:17px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.member-card{
-    background:#071f3d;
-    border:1px solid rgba(224,173,34,.2);
-    border-radius:9px;
-    padding:24px 15px;
-    text-align:center;
-    transition:.3s;
-}
-
-.member-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(224,173,34,.65);
-}
-
-.member-icon{
-    width:65px;
-    height:65px;
-    margin:0 auto 13px;
-    border-radius:50%;
-    border:2px solid var(--gold);
-    background:#03152d;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-}
-
-.member-card h3{
-    color:var(--gold2);
-    font-size:16px;
-    margin-bottom:7px;
-}
-
-.member-id{
-    color:#9eabb9;
-    font-size:11px;
-    margin-bottom:6px;
-}
-
-.member-role{
-    color:#fff;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.member-bio{
-    color:#cbd5e1;
-    font-size:11px;
-    line-height:1.5;
-    min-height:34px;
-}
-
-.profile-btn{
-    margin-top:15px;
-    padding:9px 14px;
-    border:none;
-    border-radius:5px;
-    background:var(--gold2);
-    color:#071a33;
-    font-size:11px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.profile-btn:hover{
-    transform:translateY(-2px);
-}
-
-/* =========================================================
-   COMPETITION
-========================================================= */
-
-.competition-container{
-    max-width:1000px;
-    margin:auto;
-}
-
-.competition-header{
-    text-align:center;
-    margin-bottom:32px;
-}
-
-.competition-icon{
-    font-size:48px;
-    margin-bottom:12px;
-}
-
-.competition-header h1{
-    color:var(--gold2);
-    font-size:36px;
-    margin-bottom:9px;
-}
-
-.competition-header p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-.competition-intro,
-.competition-card,
-.competition-box{
-    background:#071f3d;
-    border:1px solid rgba(224,173,34,.2);
-    border-radius:9px;
-}
-
-.competition-intro{
-    padding:25px;
-    text-align:center;
-    margin-bottom:17px;
-}
-
-.competition-intro h2,
-.competition-box h2{
-    color:var(--gold2);
-    font-size:20px;
-    margin-bottom:11px;
-}
-
-.competition-intro p,
-.competition-box p{
-    color:#cbd5e1;
-    font-size:13px;
-    line-height:1.7;
-}
-
-.competition-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-bottom:17px;
-}
-
-.competition-card{
-    padding:20px;
-}
-
-.competition-card h3{
-    color:var(--gold2);
-    font-size:15px;
-    margin-bottom:9px;
-}
-
-.competition-card p{
-    color:#cbd5e1;
-    font-size:13px;
-    line-height:1.6;
-}
-
-.competition-box{
-    padding:23px;
-    margin-bottom:17px;
-}
-
-.criteria{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
-}
-
-.criteria-item{
-    background:#03152d;
-    border:1px solid rgba(224,173,34,.2);
-    border-radius:6px;
-    padding:11px;
-    color:#d4dce6;
-    font-size:12px;
-}
-
-.rules{
-    padding-left:20px;
-}
-
-.rules li{
-    color:#cbd5e1;
-    font-size:13px;
-    line-height:1.7;
-    margin-bottom:6px;
-}
-
-.certificate-area{
-    border:1px dashed var(--gold);
-    border-radius:7px;
-    padding:17px;
-    text-align:center;
-    margin-top:16px;
-}
-
-.certificate-area h3{
-    color:var(--gold2);
-    font-size:15px;
-    margin-bottom:6px;
-}
-
-.certificate-area p{
-    color:#9faaba;
-    font-size:11px;
-}
-
-
-/* =========================================================
-   COMPETITION DATE
-========================================================= */
-
-.competition-date{
-    margin-top:20px;
-    padding:13px;
-    background:#03152d;
-    border:1px solid rgba(224,173,34,.45);
-    border-radius:7px;
-    color:#d8e0ea;
-    font-size:13px;
-}
-
-.competition-date span{
-    color:var(--gold2);
-    font-size:18px;
-    margin-right:5px;
-}
-
-.competition-date strong{
-    color:#fff;
-    margin-right:5px;
-}
-
-.competition-date b{
-    color:var(--gold2);
-}
-
-
-/* =========================================================
-   WINNER
-========================================================= */
-
-.winner-card{
-    position:relative;
-    overflow:hidden;
-    text-align:center;
-    margin-bottom:17px;
-    padding:35px 22px;
-    border:2px solid var(--gold2);
-    border-radius:12px;
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(224,173,34,.18),
-            transparent 55%
-        ),
-        linear-gradient(
-            180deg,
-            #0a294d,
-            #051a34
-        );
-    box-shadow:0 10px 40px rgba(0,0,0,.25);
-}
-
-.winner-crown{
-    font-size:48px;
-    margin-bottom:8px;
-}
-
-.winner-label{
-    color:var(--gold);
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:2px;
-}
-
-.winner-card h2{
-    color:var(--gold2);
-    font-size:25px;
-    margin:8px 0;
-}
-
-.winner-card h1{
-    color:#fff;
-    font-size:31px;
-    margin:5px 0 12px;
-}
-
-.winner-point{
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:20px;
-    background:var(--gold2);
-    color:#071a33;
-    font-weight:800;
-    font-size:14px;
-}
-
-.winner-message{
-    max-width:620px;
-    margin:18px auto;
-    color:#cbd5e1;
-    font-size:13px;
-    line-height:1.7;
-}
-
-.winner-award{
-    display:inline-block;
-    padding:12px 18px;
-    border:1px solid rgba(224,173,34,.6);
-    border-radius:7px;
-    color:var(--gold2);
-    font-weight:bold;
-    font-size:13px;
-}
-
-.winner-award span{
-    color:#aebaca;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   TOP FOUR
-========================================================= */
-
-.top-four{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-
-.top-card{
-    padding:18px 10px;
-    text-align:center;
-    border-radius:8px;
-    background:#03152d;
-    border:1px solid rgba(224,173,34,.25);
-}
-
-.top-card .rank{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.top-card h3{
-    color:#fff;
-    font-size:12px;
-    line-height:1.4;
-    margin-bottom:8px;
-}
-
-.top-card strong{
-    display:block;
-    color:var(--gold2);
-    font-size:14px;
-    margin-bottom:7px;
-}
-
-.top-card span{
-    color:#9eabb9;
-    font-size:9px;
-}
-
-.top-card.first{
-    border-color:var(--gold2);
-}
-
-.top-card.second{
-    border-color:#c8c8c8;
-}
-
-.top-card.third{
-    border-color:#aaa;
-}
-
-
-/* =========================================================
-   AWARDS
-========================================================= */
-
-.award-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-top:18px;
-}
-
-.award-card{
-    text-align:center;
-    padding:17px 8px;
-    background:#03152d;
-    border:1px solid rgba(224,173,34,.22);
-    border-radius:7px;
-}
-
-.award-icon{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.award-card h3{
-    color:var(--gold2);
-    font-size:12px;
-    margin-bottom:7px;
-}
-
-.award-card p{
-    color:#fff;
-    font-size:11px;
-    margin-bottom:5px;
-}
-
-.award-card small{
-    color:#9faaba;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   RESULTS TABLE
-========================================================= */
-
-.table-description{
-    margin-bottom:15px;
-}
-
-.results-table-wrapper{
-    width:100%;
-    overflow-x:auto;
-    border-radius:7px;
-}
-
-.results-table{
-    width:100%;
-    min-width:650px;
-    border-collapse:collapse;
-    background:#03152d;
-}
-
-.results-table th{
-    padding:13px 10px;
-    background:#050505;
-    color:var(--gold2);
-    font-size:11px;
-    text-align:left;
-    border-bottom:1px solid var(--gold);
-}
-
-.results-table td{
-    padding:12px 10px;
-    color:#d9e1ea;
-    font-size:12px;
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.results-table td:nth-child(1){
-    width:65px;
-    font-weight:bold;
-}
-
-.results-table td:nth-child(3){
-    color:var(--gold2);
-    font-weight:bold;
-}
-
-.results-table tr:hover{
-    background:#071f3d;
-}
-
-.results-table .winner-row{
-    background:rgba(224,173,34,.12);
-}
-
-.results-table .winner-row td{
-    color:#fff;
-    border-bottom:1px solid rgba(224,173,34,.4);
-}
-
-.results-table .winner-row td:first-child{
-    color:var(--gold2);
-    font-size:17px;
-}
-
-.results-table .second-row td:first-child{
-    color:#ddd;
-}
-
-.results-table .third-row td:first-child{
-    color:#bbb;
-}
-
-
-/* =========================================================
-   APPRECIATION
-========================================================= */
-
-.appreciation{
-    text-align:center;
-}
-
-.appreciation p{
-    margin-bottom:12px;
-}
-
-.completed-badge{
-    display:inline-block;
-    margin-top:12px;
-    padding:12px 22px;
-    border:1px solid var(--gold);
-    border-radius:7px;
-    color:var(--gold2);
-    font-size:12px;
-    font-weight:800;
-}
-
-.completed-badge span{
-    color:#aebaca;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-.back-home{
-    display:block;
-    margin:30px auto 0;
-    padding:11px 20px;
-    border:1px solid var(--gold);
-    border-radius:6px;
-    background:transparent;
-    color:#fff;
-    cursor:pointer;
-    font-size:13px;
-    transition:.25s;
-}
-
-.back-home:hover{
-    background:var(--gold);
-    color:#071a33;
-}
-
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:3000;
-    background:rgba(0,0,0,.88);
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-}
-
-.modal-box{
-    width:100%;
-    max-width:350px;
-    padding:25px 21px;
-    background:#071f3d;
-    border:1px solid var(--gold);
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 20px 70px rgba(0,0,0,.5);
-}
-
-.modal-box h2{
-    color:var(--gold2);
-    font-size:21px;
-    margin-bottom:12px;
-}
-
-.modal-box p{
-    color:#cbd5e1;
-    font-size:13px;
-    line-height:1.5;
-    margin-bottom:12px;
-}
-
-.password-input{
-    width:100%;
-    padding:11px;
-    border-radius:5px;
-    border:1px solid rgba(224,173,34,.8);
-    background:#03152d;
-    color:#fff;
-    outline:none;
-    margin-bottom:10px;
-}
-
-.unlock-btn,
-.cancel-btn,
-.close-btn{
-    padding:9px 14px;
-    border-radius:5px;
-    font-size:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.unlock-btn{
-    background:var(--gold2);
-    color:#071a33;
-    border:1px solid var(--gold2);
-}
-
-.cancel-btn,
-.close-btn{
-    background:transparent;
-    color:#fff;
-    border:1px solid var(--gold);
-    margin-left:5px;
-}
-
-.error{
-    color:#ff7777!important;
-    display:none;
-}
-
-.profile-info{
-    text-align:left;
-    margin-top:17px;
-}
-
-.profile-info p{
-    margin-bottom:10px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background:#050505;
-    border-top:1px solid var(--gold);
-    text-align:center;
-    padding:22px 15px;
-    color:#999;
-    font-size:12px;
-}
-
-footer span{
-    color:var(--gold2);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#03152d;color:#fff;min-height:100vh;overflow-x:hidden}
+:root{--navy:#03152d;--navy2:#061d3b;--card:#071f3d;--gold:#e0ad22;--gold2:#f2c43d;--white:#fff;--muted:#c8d2df;--black:#050505}
+
+header{width:100%;height:58px;background:#050505;border-bottom:1px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:1000}
+.logo h2{color:var(--gold);font-size:18px;font-weight:700;white-space:nowrap}
+nav{display:flex;align-items:center;gap:27px}
+nav a{color:#eee;text-decoration:none;font-size:13px;cursor:pointer;transition:.25s}
+nav a:hover{color:var(--gold)}
+.menu-btn{display:none;width:38px;height:34px;border:1px solid rgba(224,173,34,.6);background:transparent;border-radius:6px;cursor:pointer;padding:6px}
+.menu-btn span{display:block;height:2px;background:var(--gold);margin:4px 0;border-radius:5px}
+.mobile-nav{display:none}
+.mobile-nav.show{display:block;position:fixed;top:57px;left:0;right:0;background:#050505;border-bottom:1px solid var(--gold);padding:12px 5%;z-index:999}
+.mobile-nav a{display:block;padding:12px 5px;color:#fff;text-decoration:none;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer}
+
+.hero{min-height:790px;padding:70px 20px 75px;display:flex;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle at 50% 35%,rgba(14,50,91,.45),transparent 48%),linear-gradient(180deg,#061b37 0%,#03152d 100%)}
+.hero-content{width:100%;max-width:720px;margin:auto}
+.hero-logo{width:275px;max-width:70%;height:auto;display:block;margin:0 auto 28px}
+.hero h1{color:var(--gold2);font-size:48px;line-height:1.1;margin-bottom:18px;font-weight:800}
+.hero h3{font-size:22px;margin-bottom:22px;color:#f5f5f5}
+.hero p{max-width:590px;margin:auto;color:#d3dce7;line-height:1.8;font-size:16px}
+.buttons{margin-top:32px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
+.btn,.apply-btn{display:inline-flex;justify-content:center;align-items:center;cursor:pointer;text-decoration:none;font-weight:700}
+.btn{min-width:190px;padding:14px 24px;border-radius:7px;font-size:15px}
+.gold{background:var(--gold2);color:#071a33;border:2px solid var(--gold2)}
+.blue{border:2px solid var(--gold);color:#fff;background:transparent}
+.gold:hover{background:#ffd45b;transform:translateY(-2px)}
+.blue:hover{background:var(--gold);color:#071a33}
+
+.section{padding:62px 5% 72px;text-align:center;background:#03152d}
+.section-heading{display:flex;justify-content:center;align-items:center;gap:13px;margin-bottom:7px}
+.section-heading:before,.section-heading:after{content:"";width:48px;height:2px;background:var(--gold);opacity:.7}
+.section-label{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.section h2{color:#fff;font-size:31px;margin-bottom:38px}
+
+.cards,.members-grid{width:100%;max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card,.member-card,.competition-intro,.competition-card,.competition-box{background:linear-gradient(180deg,#071f3d,#051a34);border:1px solid rgba(224,173,34,.2);border-radius:9px}
+.card{min-height:300px;padding:28px 18px 22px;display:flex;flex-direction:column;align-items:center}
+.card:hover,.member-card:hover{transform:translateY(-5px);border-color:rgba(224,173,34,.65)}
+.card-icon{font-size:43px;margin-bottom:17px}
+.card h3,.member-card h3{color:var(--gold2);font-size:16px;margin-bottom:16px}
+.card p{color:#cdd6e1;font-size:12px;line-height:1.7;max-width:190px}
+.card a{color:var(--gold2);margin-top:auto;padding-top:20px;text-decoration:none;font-size:12px;font-weight:bold;cursor:pointer}
+.apply-btn{min-width:245px;margin-top:38px;padding:15px 28px;background:var(--gold2);color:#071a33;font-size:15px;border-radius:7px;border:2px solid var(--gold2)}
+
+.page{display:none;min-height:calc(100vh - 58px);padding:65px 5% 80px;background:radial-gradient(circle at top,rgba(10,43,78,.4),transparent 50%),#03152d}
+.page-container{max-width:1100px;margin:auto}
+.page-title{text-align:center;color:var(--gold2);font-size:36px;margin-bottom:10px}
+.page-intro{text-align:center;color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:40px}
+
+.member-card{padding:24px 15px;text-align:center;transition:.3s}
+.member-icon{width:65px;height:65px;margin:0 auto 13px;border-radius:50%;border:2px solid var(--gold);background:#03152d;display:flex;align-items:center;justify-content:center;font-size:27px}
+.member-id,.member-bio{color:#9eabb9;font-size:11px;margin-bottom:6px}
+.member-role{color:#fff;font-size:12px;font-weight:bold;margin-bottom:7px}
+.member-bio{color:#cbd5e1;line-height:1.5;min-height:34px}
+.profile-btn,.unlock-btn,.cancel-btn,.close-btn,.back-home{padding:9px 14px;border-radius:5px;font-size:12px;font-weight:bold;cursor:pointer}
+.profile-btn,.unlock-btn{background:var(--gold2);color:#071a33;border:1px solid var(--gold2)}
+.back-home{display:block;margin:30px auto 0;border:1px solid var(--gold);background:transparent;color:#fff}
+
+.competition-container{max-width:1000px;margin:auto}
+.competition-header{text-align:center;margin-bottom:28px}
+.competition-icon{font-size:48px;margin-bottom:12px}
+.competition-header h1{color:var(--gold2);font-size:36px;margin-bottom:9px}
+.competition-header p{color:var(--muted);font-size:14px}
+.competition-intro{padding:24px;text-align:center;margin-bottom:17px}
+.competition-intro h2,.competition-box h2{color:var(--gold2);font-size:20px;margin-bottom:11px}
+.competition-intro p,.competition-box p{color:#cbd5e1;font-size:13px;line-height:1.7}
+.competition-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-bottom:17px}
+.competition-card{padding:20px}
+.competition-card h3{color:var(--gold2);font-size:15px;margin-bottom:9px}
+.competition-card p{color:#cbd5e1;font-size:13px;line-height:1.6}
+.competition-box{padding:23px;margin-bottom:17px}
+
+.complete-banner{border:1px solid var(--gold);background:linear-gradient(135deg,rgba(224,173,34,.16),rgba(7,31,61,.95));text-align:center;padding:22px;border-radius:10px;margin-bottom:17px}
+.complete-banner .date{color:#fff;font-size:13px;margin-top:7px}
+
+.results-table-wrap{overflow-x:auto;border:1px solid rgba(224,173,34,.25);border-radius:8px}
+.results-table{width:100%;border-collapse:collapse;min-width:600px}
+.results-table th{background:#050505;color:var(--gold2);padding:13px 10px;text-align:left;font-size:13px}
+.results-table td{padding:11px 10px;border-top:1px solid rgba(224,173,34,.12);color:#e6ebf2;font-size:12px}
+.results-table tr:nth-child(1) td{background:rgba(224,173,34,.14)}
+.rank-badge{font-weight:800;color:var(--gold2)}
+
+.place-awards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.award-card{background:#03152d;border:1px solid rgba(224,173,34,.35);border-radius:9px;padding:18px 10px;text-align:center}
+.award-medal{font-size:34px}
+.award-card h3{color:var(--gold2);font-size:14px;margin:8px 0 5px}
+.award-card strong{display:block;color:#fff;font-size:13px}
+.award-card small{display:block;color:#aeb9c8;margin-top:5px}
+.participant-note{color:#cbd5e1;font-size:12px;line-height:1.7;margin-top:12px}
+
+.certificate-area{border:1px dashed var(--gold);border-radius:7px;padding:19px;text-align:center;margin-top:16px}
+.certificate-area h3{color:var(--gold2);font-size:16px;margin-bottom:7px}
+.certificate-area p{color:#9faaba;font-size:11px}
+
+.rules{padding-left:20px}
+.rules li{color:#cbd5e1;font-size:13px;line-height:1.7;margin-bottom:6px}
+
+.modal{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:15px}
+.modal-box{width:100%;max-width:380px;padding:25px 21px;background:#071f3d;border:1px solid var(--gold);border-radius:10px;text-align:center}
+.modal-box h2{color:var(--gold2);font-size:21px;margin-bottom:12px}
+.modal-box p{color:#cbd5e1;font-size:13px;line-height:1.5;margin-bottom:12px}
+.password-input{width:100%;padding:11px;border-radius:5px;border:1px solid rgba(224,173,34,.8);background:#03152d;color:#fff;outline:none;margin-bottom:10px}
+.cancel-btn,.close-btn{background:transparent;color:#fff;border:1px solid var(--gold);margin-left:5px}
+.error{color:#ff7777!important;display:none}
+.profile-info{text-align:left;margin-top:17px}
+.profile-info p{margin-bottom:10px}
+
+footer{background:#050505;border-top:1px solid var(--gold);text-align:center;padding:22px 15px;color:#999;font-size:12px}
+footer span{color:var(--gold2)}
 
 @media(max-width:950px){
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-        max-width:700px;
-    }
-
-    .members-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
+.cards,.members-grid{grid-template-columns:repeat(2,1fr);max-width:700px}
+.place-awards{grid-template-columns:repeat(2,1fr)}
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:700px){
+header{height:57px;padding:0 5%}
+.logo h2{font-size:15px}
+nav{display:none}
+.menu-btn{display:block}
 
-    header{
-        height:57px;
-        padding:0 5%;
-    }
+.hero{min-height:auto;padding:65px 18px 75px}
+.hero-logo{width:230px;max-width:75%}
+.hero h1{font-size:34px}
+.hero h3{font-size:17px}
+.hero p{font-size:14px}
 
-    .logo h2{
-        font-size:15px;
-    }
+.buttons{flex-direction:column;width:100%;margin-top:27px}
+.btn{width:100%;max-width:280px}
+.section{padding:50px 15px 60px}
+.section h2{font-size:27px}
 
-    nav{
-        display:none;
-    }
+.cards{grid-template-columns:repeat(2,1fr);gap:10px}
+.card{min-height:265px;padding:22px 10px 18px}
+.card-icon{font-size:35px}
+.card h3{font-size:14px}
+.card p{font-size:10px}
 
-    .menu-btn{
-        display:block;
-    }
+.page{padding:48px 12px 65px}
+.page-title{font-size:28px}
+.page-intro{font-size:12px;margin-bottom:28px}
+.members-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+.member-card{padding:17px 9px}
+.member-icon{width:52px;height:52px;font-size:22px}
+.member-card h3{font-size:13px}
+.member-bio{font-size:9px}
+.profile-btn{font-size:9px;padding:7px 9px}
 
-    .mobile-nav{
-        position:fixed;
-        top:57px;
-        left:0;
-        right:0;
-        background:#050505;
-        border-bottom:1px solid var(--gold);
-        padding:12px 5%;
-        z-index:999;
-    }
-
-    .mobile-nav.show{
-        display:block;
-    }
-
-    .mobile-nav a{
-        display:block;
-        padding:12px 5px;
-        color:#fff;
-        text-decoration:none;
-        font-size:14px;
-        border-bottom:1px solid rgba(255,255,255,.05);
-        cursor:pointer;
-    }
-
-    .mobile-nav a:last-child{
-        border-bottom:none;
-    }
-
-    .mobile-nav a:hover{
-        color:var(--gold);
-    }
-
-    .hero{
-        min-height:auto;
-        padding:65px 18px 75px;
-    }
-
-    .hero-logo{
-        width:230px;
-        max-width:75%;
-        margin-bottom:25px;
-    }
-
-    .hero h1{
-        font-size:34px;
-        line-height:1.15;
-    }
-
-    .hero h3{
-        font-size:17px;
-        margin-bottom:18px;
-    }
-
-    .hero p{
-        font-size:14px;
-        line-height:1.75;
-    }
-
-    .buttons{
-        flex-direction:column;
-        width:100%;
-        margin-top:27px;
-    }
-
-    .btn{
-        width:100%;
-        max-width:280px;
-    }
-
-    .section{
-        padding:50px 15px 60px;
-    }
-
-    .section h2{
-        font-size:27px;
-        margin-bottom:28px;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-    .card{
-        min-height:265px;
-        padding:22px 10px 18px;
-    }
-
-    .card-icon{
-        font-size:35px;
-    }
-
-    .card h3{
-        font-size:14px;
-    }
-
-    .card p{
-        font-size:10px;
-    }
-
-    .card a{
-        font-size:10px;
-    }
-
-    .apply-btn{
-        width:90%;
-        max-width:280px;
-    }
-
-    .page{
-        padding:48px 12px 65px;
-    }
-
-    .page-title{
-        font-size:28px;
-    }
-
-    .page-intro{
-        font-size:12px;
-        margin-bottom:28px;
-    }
-
-    .members-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-    .member-card{
-        padding:17px 9px;
-    }
-
-    .member-icon{
-        width:52px;
-        height:52px;
-        font-size:22px;
-    }
-
-    .member-card h3{
-        font-size:13px;
-    }
-
-    .member-bio{
-        font-size:9px;
-    }
-
-    .profile-btn{
-        font-size:9px;
-        padding:7px 9px;
-    }
-
-    .competition-header h1{
-        font-size:27px;
-    }
-
-    .competition-icon{
-        font-size:40px;
-    }
-
-    .competition-grid{
-        grid-template-columns:1fr;
-    }
-
-    .criteria{
-        grid-template-columns:1fr;
-    }
-
-    .competition-intro,
-    .competition-card,
-    .competition-box{
-        padding:18px;
-    }
-
-    .winner-card{
-        padding:28px 15px;
-    }
-
-    .winner-crown{
-        font-size:40px;
-    }
-
-    .winner-card h2{
-        font-size:21px;
-    }
-
-    .winner-card h1{
-        font-size:23px;
-    }
-
-    .winner-message{
-        font-size:11px;
-    }
-
-    .winner-award{
-        font-size:11px;
-    }
-
-    .top-four{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .award-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .competition-date{
-        font-size:11px;
-    }
-
+.competition-header h1{font-size:27px}
+.competition-icon{font-size:40px}
+.competition-grid{grid-template-columns:1fr}
+.competition-intro,.competition-card,.competition-box{padding:18px}
+.place-awards{grid-template-columns:repeat(2,1fr);gap:8px}
+.award-card{padding:14px 7px}
+.award-card h3{font-size:12px}
+.award-card strong{font-size:11px}
 }
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
 
 @media(max-width:380px){
-
-    .logo h2{
-        font-size:13px;
-    }
-
-    .hero{
-        padding-left:13px;
-        padding-right:13px;
-    }
-
-    .hero-logo{
-        width:200px;
-    }
-
-    .hero h1{
-        font-size:29px;
-    }
-
-    .hero h3{
-        font-size:15px;
-    }
-
-    .hero p{
-        font-size:13px;
-    }
-
-    .cards{
-        gap:8px;
-    }
-
-    .card{
-        min-height:250px;
-        padding:18px 7px;
-    }
-
-    .card-icon{
-        font-size:30px;
-    }
-
-    .card h3{
-        font-size:12px;
-    }
-
-    .card p{
-        font-size:9px;
-    }
-
-    .members-grid{
-        gap:7px;
-    }
-
-    .member-card{
-        padding:14px 6px;
-    }
-
-    .member-card h3{
-        font-size:11px;
-    }
-
-    .top-four{
-        grid-template-columns:1fr 1fr;
-        gap:7px;
-    }
-
-    .top-card{
-        padding:13px 5px;
-    }
-
-    .top-card h3{
-        font-size:10px;
-    }
-
-    .award-grid{
-        gap:7px;
-    }
-
-    .award-card h3{
-        font-size:10px;
-    }
-
+.logo h2{font-size:13px}
+.hero-logo{width:200px}
+.hero h1{font-size:29px}
+.hero h3{font-size:15px}
+.hero p{font-size:13px}
+.card{min-height:250px}
+.card h3{font-size:12px}
+.card p{font-size:9px}
 }
-
-
-/* =========================================================
-   LARGE SCREENS
-========================================================= */
-
-@media(min-width:1400px){
-
-    .hero{
-        min-height:850px;
-    }
-
-    .hero h1{
-        font-size:54px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    .cards{
-        max-width:1200px;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-
 <header>
+<div class="logo"><h2>LYRICS VIBES TEAM</h2></div>
 
-    <div class="logo">
-        <h2>LYRICS VIBES TEAM</h2>
-    </div>
+<nav>
+<a onclick="showHome()">Home</a>
+<a onclick="showMembers()">Members</a>
+<a href="about.html">About</a>
+<a onclick="showCompetition()">Competitions</a>
+<a href="#">Events</a>
+</nav>
 
-    <nav>
-
-        <a onclick="showHome()" id="desktopHome">
-            Home
-        </a>
-
-        <a onclick="showMembers()" id="desktopMembers">
-            Members
-        </a>
-
-        <a href="about.html">
-            About
-        </a>
-
-        <a onclick="showCompetition()">
-            Competitions
-        </a>
-
-        <a href="#">
-            Events
-        </a>
-
-    </nav>
-
-    <button
-        class="menu-btn"
-        onclick="toggleMobileMenu()"
-        aria-label="Open Menu">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
+<button class="menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu">
+<span></span><span></span><span></span>
+</button>
 </header>
 
-
-<div
-    class="mobile-nav"
-    id="mobileNav">
-
-    <a onclick="mobileGo('home')">
-        Home
-    </a>
-
-    <a onclick="mobileGo('members')">
-        Members
-    </a>
-
-    <a href="about.html">
-        About
-    </a>
-
-    <a onclick="mobileGo('competition')">
-        Competitions
-    </a>
-
-    <a href="#">
-        Events
-    </a>
-
+<div class="mobile-nav" id="mobileNav">
+<a onclick="mobileGo('home')">Home</a>
+<a onclick="mobileGo('members')">Members</a>
+<a href="about.html">About</a>
+<a onclick="mobileGo('competition')">Competitions</a>
+<a href="#">Events</a>
 </div>
-
-
-<!-- =========================================================
-     HOME
-========================================================= -->
 
 <div id="homePage">
 
-    <section class="hero">
+<section class="hero">
+<div class="hero-content">
 
-        <div class="hero-content">
+<img src="New Project 99 [0AAD052].png"
+alt="Lyrics Vibes Team Logo"
+class="hero-logo">
 
-            <img
-                src="New Project 99 [0AAD052].png"
-                alt="Lyrics Vibes Team Logo"
-                class="hero-logo">
+<h1>LYRICS VIBES TEAM</h1>
+<h3>Creativity • Unity • Excellence</h3>
 
-            <h1>
-                LYRICS VIBES TEAM
-            </h1>
+<p>
+Welcome to the official website of Lyrics Vibes Team —
+a creative community dedicated to Lyrics, Editing,
+Design, Tutorials and Competition.
+</p>
 
-            <h3>
-                Creativity • Unity • Excellence
-            </h3>
+<div class="buttons">
+<a class="btn gold" onclick="showMembers()">Explore Members</a>
+<a href="about.html" class="btn blue">About Our Team</a>
+</div>
 
-            <p>
-                Welcome to the official website of Lyrics Vibes Team —
-                a creative community dedicated to Lyrics, Editing,
-                Design, Tutorials and Competition.
-            </p>
+</div>
+</section>
 
-            <div class="buttons">
+<section class="section">
 
-                <a
-                    class="btn gold"
-                    onclick="showMembers()">
+<div class="section-heading">
+<span class="section-label">What We Do</span>
+</div>
 
-                    Explore Members
+<h2>What We Do</h2>
 
-                </a>
+<div class="cards">
 
-                <a
-                    href="about.html"
-                    class="btn blue">
+<div class="card">
+<div class="card-icon">👥</div>
+<h3>Members</h3>
+<p>Explore our official members and verify their membership through QR Code.</p>
+<a onclick="showMembers()">View Members →</a>
+</div>
 
-                    About Our Team
+<div class="card">
+<div class="card-icon">🏆</div>
+<h3>Competitions</h3>
+<p>Discover our LVT Lyrics Competition, showcase your creativity and turn lyrics into amazing videos.</p>
+<a onclick="showCompetition()">View Competition →</a>
+</div>
 
-                </a>
+<div class="card">
+<div class="card-icon">📖</div>
+<h3>Tutorials</h3>
+<p>Learn Lyrics, Editing, Design and other creative skills.</p>
+<a href="#">Explore Tutorials →</a>
+</div>
 
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                What We Do
-            </span>
-
-        </div>
-
-        <h2>
-            What We Do
-        </h2>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="card-icon">
-                    👥
-                </div>
-
-                <h3>
-                    Members
-                </h3>
-
-                <p>
-                    Explore our official members and verify
-                    their membership through QR Code.
-                </p>
-
-                <a onclick="showMembers()">
-                    View Members →
-                </a>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🏆
-                </div>
-
-                <h3>
-                    Competitions
-                </h3>
-
-                <p>
-                    Discover our LVT Lyrics Competition,
-                    showcase your creativity and turn lyrics
-                    into amazing videos.
-                </p>
-
-                <a onclick="showCompetition()">
-                    View Competition →
-                </a>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    📖
-                </div>
-
-                <h3>
-                    Tutorials
-                </h3>
-
-                <p>
-                    Learn Lyrics, Editing, Design and other
-                    creative skills.
-                </p>
-
-                <a href="#">
-                    Explore Tutorials →
-                </a>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    📅
-                </div>
-
-                <h3>
-                    Events
-                </h3>
-
-                <p>
-                    Stay updated with our upcoming events
-                    and activities.
-                </p>
-
-                <a href="#">
-                    View Events →
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <a
-            href="apply.html"
-            class="apply-btn">
-
-            APPLY TO JOIN
-
-        </a>
-
-    </section>
+<div class="card">
+<div class="card-icon">📅</div>
+<h3>Events</h3>
+<p>Stay updated with our upcoming events and activities.</p>
+<a href="#">View Events →</a>
+</div>
 
 </div>
 
-
-<!-- =========================================================
-     MEMBERS
-========================================================= -->
-
-<div
-    id="membersPage"
-    class="page">
-
-    <div class="page-container">
-
-        <h1 class="page-title">
-            Explore Members
-        </h1>
-
-        <p class="page-intro">
-            Meet the official members of Lyrics Vibes Team.
-        </p>
-
-
-        <div class="members-grid">
-
-            <div class="member-card">
-
-                <div class="member-icon">👤</div>
-
-                <h3>Abba Master</h3>
-
-                <p class="member-id">
-                    Member ID: LTV001
-                </p>
-
-                <p class="member-role">
-                    Admin
-                </p>
-
-                <p class="member-bio">
-                    Creative video editor and designer.
-                </p>
-
-                <button
-                    class="profile-btn"
-                    onclick="openProfile(
-                        'Abba Master',
-                        'LTV001',
-                        'Admin',
-                        'Creative video editor and designer.'
-                    )">
-
-                    View Profile
-
-                </button>
-
-            </div>
-
-
-            <div class="member-card">
-
-                <div class="member-icon">👤</div>
-
-                <h3>Honourable</h3>
-
-                <p class="member-id">
-                    Member ID: LTV002
-                </p>
-
-                <p class="member-role">
-                    Admin
-                </p>
-
-                <p class="member-bio">
-                    Creative video editor and designer.
-                </p>
-
-                <button
-                    class="profile-btn"
-                    onclick="openProfile(
-                        'Honourable',
-                        'LTV002',
-                        'Admin',
-                        'Creative video editor and designer.'
-                    )">
-
-                    View Profile
-
-                </button>
-
-            </div>
-
-
-            <div class="member-card">
-
-                <div class="member-icon">👤</div>
-
-                <h3>Abba Miloniya</h3>
-
-                <p class="member-id">
-                    Member ID: LTV003
-                </p>
-
-                <p class="member-role">
-                    Admin
-                </p>
-
-                <p class="member-bio">
-                    Creative video editor and designer.
-                </p>
-
-                <button
-                    class="profile-btn"
-                    onclick="openProfile(
-                        'Abba Miloniya',
-                        'LTV003',
-                        'Admin',
-                        'Creative video editor and designer.'
-                    )">
-
-                    View Profile
-
-                </button>
-
-            </div>
-
-
-            <div class="member-card">
-
-                <div class="member-icon">👤</div>
-
-                <h3>Sayyada Lyrics</h3>
-
-                <p class="member-id">
-                    Member ID: LTV004
-                </p>
-
-                <p class="member-role">
-                    Admin
-                </p>
-
-                <p class="member-bio">
-                    Creative video editor and designer.
-                </p>
-
-                <button
-                    class="profile-btn"
-                    onclick="openProfile(
-                        'Sayyada Lyrics',
-                        'LTV004',
-                        'Admin',
-                        'Creative video editor and designer.'
-                    )">
-
-                    View Profile
-
-                </button>
-
-            </div>
-
-
-            <div class="member-card">
-
-                <div class="member-icon">👤</div>
-
-                <h3>Siyamah Lyrics</h3>
-
-                <p class="member-id">
-                    Member ID: LTV005
-                </p>
-
-                <p class="member-role">
-                    Admin
-                </p>
-
-                <p class="member-bio">
-                    Creative video editor and designer.
-                </p>
-
-                <button
-                    class="profile-btn"
-                    onclick="openProfile(
-                        'Siyamah Lyrics',
-                        'LTV005',
-                        'Admin',
-                        'Creative video editor and designer.'
-                    )">
-
-                    View Profile
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="back-home"
-            onclick="showHome()">
-
-            ← Back to Home
-
-        </button>
-
-    </div>
+<a href="apply.html" class="apply-btn">APPLY TO JOIN</a>
+
+</section>
+</div>
+
+<div id="membersPage" class="page">
+
+<div class="page-container">
+
+<h1 class="page-title">Explore Members</h1>
+
+<p class="page-intro">
+Meet the official members of Lyrics Vibes Team.
+</p>
+
+<div class="members-grid">
+
+<div class="member-card">
+<div class="member-icon">👤</div>
+<h3>Abba Master</h3>
+<p class="member-id">Member ID: LTV001</p>
+<p class="member-role">Admin</p>
+<p class="member-bio">Creative video editor and designer.</p>
+<button class="profile-btn"
+onclick="openProfile('Abba Master','LTV001','Admin','Creative video editor and designer.')">
+View Profile
+</button>
+</div>
+
+<div class="member-card">
+<div class="member-icon">👤</div>
+<h3>Honourable</h3>
+<p class="member-id">Member ID: LTV002</p>
+<p class="member-role">Admin</p>
+<p class="member-bio">Creative video editor and designer.</p>
+<button class="profile-btn"
+onclick="openProfile('Honourable','LTV002','Admin','Creative video editor and designer.')">
+View Profile
+</button>
+</div>
+
+<div class="member-card">
+<div class="member-icon">👤</div>
+<h3>Abba Miloniya</h3>
+<p class="member-id">Member ID: LTV003</p>
+<p class="member-role">Admin</p>
+<p class="member-bio">Creative video editor and designer.</p>
+<button class="profile-btn"
+onclick="openProfile('Abba Miloniya','LTV003','Admin','Creative video editor and designer.')">
+View Profile
+</button>
+</div>
+
+<div class="member-card">
+<div class="member-icon">👤</div>
+<h3>Sayyada Lyrics</h3>
+<p class="member-id">Member ID: LTV004</p>
+<p class="member-role">Admin</p>
+<p class="member-bio">Creative video editor and designer.</p>
+<button class="profile-btn"
+onclick="openProfile('Sayyada Lyrics','LTV004','Admin','Creative video editor and designer.')">
+View Profile
+</button>
+</div>
+
+<div class="member-card">
+<div class="member-icon">👤</div>
+<h3>Siyamah Lyrics</h3>
+<p class="member-id">Member ID: LTV005</p>
+<p class="member-role">Admin</p>
+<p class="member-bio">Creative video editor and designer.</p>
+<button class="profile-btn"
+onclick="openProfile('Siyamah Lyrics','LTV005','Admin','Creative video editor and designer.')">
+View Profile
+</button>
+</div>
 
 </div>
 
+<button class="back-home" onclick="showHome()">← Back to Home</button>
 
-<!-- =========================================================
-     COMPETITION
-========================================================= -->
+</div>
+</div>
 
-<div
-    id="competitionPage"
-    class="page">
+<div id="competitionPage" class="page">
 
-    <div class="competition-container">
+<div class="competition-container">
 
-        <div class="competition-header">
+<div class="competition-header">
+<div class="competition-icon">🏆</div>
+<h1>LVT Lyrics Competition</h1>
+<p>Lyrics Video Competition • Final Results</p>
+</div>
 
-            <div class="competition-icon">
-                🏆
-            </div>
+<div class="complete-banner">
 
-            <h1>
-                LVT Lyrics Competition
-            </h1>
+<h2>🏆 COMPETITION COMPLETED</h2>
 
-            <p>
-                Lyrics Video Competition
-            </p>
-
-        </div>
-
-
-        <!-- COMPLETED -->
-
-        <div class="competition-intro">
-
-            <h2>
-                🏁 Competition Completed
-            </h2>
-
-            <p>
-                The LVT Lyrics Competition has officially been completed.
-                We sincerely appreciate every participant who contributed
-                their creativity, effort and dedication.
-            </p>
-
-            <div class="competition-date">
-
-                <span>📅</span>
-
-                <strong>
-                    Competition Completed:
-                </strong>
-
-                <b>
-                    21 June 2026
-                </b>
-
-            </div>
-
-        </div>
-
-
-        <!-- WINNER -->
-
-        <div class="winner-card">
-
-            <div class="winner-crown">
-                👑
-            </div>
-
-            <div class="winner-label">
-                LYRICS VIBES TEAM
-            </div>
-
-            <h2>
-                🏆 WINNER
-            </h2>
-
-            <h1>
-                SARAUTA LYRICS
-            </h1>
-
-            <div class="winner-point">
-                365 POINTS
-            </div>
-
-            <div class="winner-message">
-
-                Congratulations on your outstanding performance.
-                Lyrics Vibes Team proudly recognizes your achievement
-                as the winner of this competition.
-
-            </div>
-
-            <div class="winner-award">
-
-                🏅 Certificate of Achievement
-
-                <br>
-
-                <span>
-                    Champion • LVT Lyrics Competition
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- TOP FOUR -->
-
-        <div class="competition-box">
-
-            <h2>
-                🏅 Top 4 Recognition
-            </h2>
-
-            <div class="top-four">
-
-                <div class="top-card first">
-
-                    <div class="rank">🥇</div>
-
-                    <h3>
-                        SARAUTA LYRICS
-                    </h3>
-
-                    <strong>
-                        365 Points
-                    </strong>
-
-                    <span>
-                        WINNER
-                    </span>
-
-                </div>
-
-
-                <div class="top-card second">
-
-                    <div class="rank">🥈</div>
-
-                    <h3>
-                        A. SADIK LYRICS
-                    </h3>
-
-                    <strong>
-                        325 Points
-                    </strong>
-
-                    <span>
-                        2ND PLACE
-                    </span>
-
-                </div>
-
-
-                <div class="top-card third">
-
-                    <div class="rank">🥉</div>
-
-                    <h3>
-                        SIYAMAH LYRICS
-                    </h3>
-
-                    <strong>
-                        270 Points
-                    </strong>
-
-                    <span>
-                        3RD PLACE
-                    </span>
-
-                </div>
-
-
-                <div class="top-card fourth">
-
-                    <div class="rank">🏅</div>
-
-                    <h3>
-                        DEEJAH LYRICS
-                    </h3>
-
-                    <strong>
-                        270 Points
-                    </strong>
-
-                    <span>
-                        4TH PLACE
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CERTIFICATES -->
-
-        <div class="competition-box">
-
-            <h2>
-                📜 Certificates & Awards
-            </h2>
-
-            <p>
-                Lyrics Vibes Team recognizes the dedication and effort
-                of all participants. Special certificates and recognition
-                are given to the winner and top performers.
-            </p>
-
-
-            <div class="award-grid">
-
-                <div class="award-card">
-
-                    <div class="award-icon">
-                        👑
-                    </div>
-
-                    <h3>
-                        Champion Award
-                    </h3>
-
-                    <p>
-                        SARAUTA LYRICS
-                    </p>
-
-                    <small>
-                        365 Points
-                    </small>
-
-                </div>
-
-
-                <div class="award-card">
-
-                    <div class="award-icon">
-                        🥈
-                    </div>
-
-                    <h3>
-                        Second Place
-                    </h3>
-
-                    <p>
-                        A. SADIK LYRICS
-                    </p>
-
-                    <small>
-                        325 Points
-                    </small>
-
-                </div>
-
-
-                <div class="award-card">
-
-                    <div class="award-icon">
-                        🥉
-                    </div>
-
-                    <h3>
-                        Third Place
-                    </h3>
-
-                    <p>
-                        SIYAMAH LYRICS
-                    </p>
-
-                    <small>
-                        270 Points
-                    </small>
-
-                </div>
-
-
-                <div class="award-card">
-
-                    <div class="award-icon">
-                        🏅
-                    </div>
-
-                    <h3>
-                        Fourth Place
-                    </h3>
-
-                    <p>
-                        DEEJAH LYRICS
-                    </p>
-
-                    <small>
-                        270 Points
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="certificate-area">
-
-                <h3>
-                    📜 Certificate of Achievement
-                </h3>
-
-                <p>
-                    Certificates and awards for the recognized
-                    participants are officially recorded as part
-                    of the competition results.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- FINAL RESULTS -->
-
-        <div class="competition-box">
-
-            <h2>
-                📊 Final Competition Results
-            </h2>
-
-            <p class="table-description">
-                Official final standings after the competition
-                was completed on 21 June 2026.
-            </p>
-
-
-            <div class="results-table-wrapper">
-
-                <table class="results-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                RANK
-                            </th>
-
-                            <th>
-                                NAME
-                            </th>
-
-                            <th>
-                                POINTS
-                            </th>
-
-                            <th>
-                                STATUS
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        <tr class="winner-row">
-
-                            <td>1</td>
-
-                            <td>
-                                SARAUTA LYRICS
-                            </td>
-
-                            <td>
-                                365
-                            </td>
-
-                            <td>
-                                👑 WINNER
-                            </td>
-
-                        </tr>
-
-
-                        <tr class="second-row">
-
-                            <td>2</td>
-
-                            <td>
-                                A. SADIK LYRICS
-                            </td>
-
-                            <td>
-                                325
-                            </td>
-
-                            <td>
-                                🥈 2ND PLACE
-                            </td>
-
-                        </tr>
-
-
-                        <tr class="third-row">
-
-                            <td>3</td>
-
-                            <td>
-                                SIYAMAH LYRICS
-                            </td>
-
-                            <td>
-                                270
-                            </td>
-
-                            <td>
-                                🥉 3RD PLACE
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>4</td>
-
-                            <td>
-                                DEEJAH LYRICS
-                            </td>
-
-                            <td>
-                                270
-                            </td>
-
-                            <td>
-                                🏅 4TH PLACE
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>5</td>
-
-                            <td>
-                                BINTU HAFIZ LYRICS
-                            </td>
-
-                            <td>
-                                180
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>6</td>
-
-                            <td>
-                                LY SMART LYRICS
-                            </td>
-
-                            <td>
-                                180
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>7</td>
-
-                            <td>
-                                NANAH LYRICS
-                            </td>
-
-                            <td>
-                                175
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>8</td>
-
-                            <td>
-                                DAN DANGO LYRICS
-                            </td>
-
-                            <td>
-                                165
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>9</td>
-
-                            <td>
-                                Y. GARKUWA LYRICS
-                            </td>
-
-                            <td>
-                                85
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>10</td>
-
-                            <td>
-                                CRUSH ASMEEY LYRICS
-                            </td>
-
-                            <td>
-                                85
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>11</td>
-
-                            <td>
-                                AIIMAR VOICE
-                            </td>
-
-                            <td>
-                                75
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>12</td>
-
-                            <td>
-                                ABDULRAHMAN LYRICS
-                            </td>
-
-                            <td>
-                                75
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>13</td>
-
-                            <td>
-                                ABDUL LYRICS
-                            </td>
-
-                            <td>
-                                70
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>14</td>
-
-                            <td>
-                                KHADIJA LYRICS
-                            </td>
-
-                            <td>
-                                70
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>15</td>
-
-                            <td>
-                                MEERAH LYRICS
-                            </td>
-
-                            <td>
-                                65
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>16</td>
-
-                            <td>
-                                YAR AREWA LYRICS
-                            </td>
-
-                            <td>
-                                60
-                            </td>
-
-                            <td>
-                                Participant
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-        <!-- APPRECIATION -->
-
-        <div class="competition-box appreciation">
-
-            <h2>
-                ❤️ Appreciation
-            </h2>
-
-            <p>
-                Lyrics Vibes Team appreciates every participant
-                who took part in this competition. Your effort,
-                creativity and commitment made this competition
-                successful.
-            </p>
-
-            <p>
-                Congratulations to all participants and especially
-                to the winners and recognized members.
-            </p>
-
-            <div class="completed-badge">
-
-                ✓ COMPETITION COMPLETED
-
-                <br>
-
-                <span>
-                    21 JUNE 2026
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- COMPETITION INFORMATION -->
-
-        <div class="competition-grid">
-
-            <div class="competition-card">
-
-                <h3>
-                    👥 Eligibility
-                </h3>
-
-                <p>
-                    The competition is open to
-                    Lyrics Vibes Team members only.
-                </p>
-
-            </div>
-
-
-            <div class="competition-card">
-
-                <h3>
-                    🆓 Entry
-                </h3>
-
-                <p>
-                    Participation is completely free.
-                    No registration fee is required.
-                </p>
-
-            </div>
-
-
-            <div class="competition-card">
-
-                <h3>
-                    🎬 Competition Type
-                </h3>
-
-                <p>
-                    Participants compete by creating
-                    creative Lyrics Videos.
-                </p>
-
-            </div>
-
-
-            <div class="competition-card">
-
-                <h3>
-                    📅 Completed
-                </h3>
-
-                <p>
-                    Final competition date:
-                    <strong style="color:var(--gold2);">
-                        21 June 2026
-                    </strong>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- JUDGING CRITERIA -->
-
-        <div class="competition-box">
-
-            <h2>
-                ⭐ Judging Criteria
-            </h2>
-
-            <div class="criteria">
-
-                <div class="criteria-item">
-                    ✨ Text Animation
-                </div>
-
-                <div class="criteria-item">
-                    🎨 Text Colors
-                </div>
-
-                <div class="criteria-item">
-                    🖼️ Background
-                </div>
-
-                <div class="criteria-item">
-                    📝 Word-by-Word Lyrics
-                </div>
-
-                <div class="criteria-item">
-                    💡 Creativity
-                </div>
-
-                <div class="criteria-item">
-                    🎞️ Overall Editing
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- RULES -->
-
-        <div class="competition-box">
-
-            <h2>
-                📜 Competition Rules
-            </h2>
-
-            <ul class="rules">
-
-                <li>
-                    Submit your work within the announced deadline.
-                </li>
-
-                <li>
-                    Follow all competition requirements and guidelines.
-                </li>
-
-                <li>
-                    The submitted work should be created by the participant.
-                </li>
-
-                <li>
-                    Participants should respect the competition
-                    instructions provided by the team.
-                </li>
-
-                <li>
-                    Final standings are based on the official
-                    competition points.
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <button
-            class="back-home"
-            onclick="showHome()">
-
-            ← Back to Home
-
-        </button>
-
-    </div>
+<p class="date">
+The competition officially ended on
+<strong>21 June 2026</strong>.
+</p>
 
 </div>
 
+<div class="competition-intro">
 
-<!-- =========================================================
-     PASSWORD MODAL
-========================================================= -->
+<h2>About The Competition</h2>
 
-<div
-    class="modal"
-    id="passwordModal">
-
-    <div class="modal-box">
-
-        <h2>
-            🔐 Member Profile
-        </h2>
-
-        <p>
-            Enter the password to view this profile.
-        </p>
-
-        <p
-            class="error"
-            id="passwordError">
-
-            Incorrect password. Please try again.
-
-        </p>
-
-        <input
-            type="password"
-            id="passwordInput"
-            class="password-input"
-            placeholder="Enter password">
-
-        <button
-            class="unlock-btn"
-            onclick="checkPassword()">
-
-            Unlock Profile
-
-        </button>
-
-        <button
-            class="cancel-btn"
-            onclick="closePassword()">
-
-            Cancel
-
-        </button>
-
-    </div>
+<p>
+LVT Lyrics Competition is a creative Lyrics Video
+competition organized by Lyrics Vibes Team to encourage
+creativity, teamwork and video editing skills.
+</p>
 
 </div>
 
+<div class="competition-grid">
 
-<!-- =========================================================
-     PROFILE MODAL
-========================================================= -->
+<div class="competition-card">
+<h3>👥 Eligibility</h3>
+<p>The competition was open to Lyrics Vibes Team members.</p>
+</div>
 
-<div
-    class="modal"
-    id="profileModal">
+<div class="competition-card">
+<h3>🆓 Entry</h3>
+<p>Participation was completely free. No registration fee was required.</p>
+</div>
 
-    <div class="modal-box">
+<div class="competition-card">
+<h3>📅 Completion Date</h3>
+<p>The final competition date was <strong>21 June 2026</strong>.</p>
+</div>
 
-        <h2 id="profileName">
-            Member Profile
-        </h2>
-
-        <div class="profile-info">
-
-            <p>
-                <strong>Member ID:</strong>
-                <span id="profileId"></span>
-            </p>
-
-            <p>
-                <strong>Position:</strong>
-                <span id="profileRole"></span>
-            </p>
-
-            <p>
-                <strong>Bio:</strong>
-                <span id="profileBio"></span>
-            </p>
-
-        </div>
-
-        <button
-            class="close-btn"
-            onclick="closeProfile()">
-
-            Close Profile
-
-        </button>
-
-    </div>
+<div class="competition-card">
+<h3>🎬 Competition Type</h3>
+<p>Participants competed by creating creative Lyrics Videos.</p>
+</div>
 
 </div>
 
+<div class="competition-box">
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<h2>🏆 Final Winners & Recognition</h2>
+
+<div class="place-awards">
+
+<div class="award-card">
+<div class="award-medal">🏆</div>
+<h3>1st Place • WINNER</h3>
+<strong>SARAUTA LYRICS</strong>
+<small>365 Points</small>
+</div>
+
+<div class="award-card">
+<div class="award-medal">🥈</div>
+<h3>2nd Place</h3>
+<strong>A. SADIK LYRICS</strong>
+<small>325 Points</small>
+</div>
+
+<div class="award-card">
+<div class="award-medal">🥉</div>
+<h3>3rd Place</h3>
+<strong>SIYAMAH LYRICS</strong>
+<small>270 Points</small>
+</div>
+
+<div class="award-card">
+<div class="award-medal">🏅</div>
+<h3>4th Place</h3>
+<strong>DEEJAH LYRICS</strong>
+<small>270 Points</small>
+</div>
+
+</div>
+
+<p class="participant-note">
+Special recognition is given to the 1st, 2nd, 3rd and 4th
+place participants for their outstanding performance.
+All other participants are also recognized for their effort
+and contribution to the competition.
+</p>
+
+</div>
+
+<div class="competition-box">
+
+<h2>📊 Final Competition Results</h2>
+
+<div class="results-table-wrap">
+
+<table class="results-table">
+
+<thead>
+<tr>
+<th>RANK</th>
+<th>NAME</th>
+<th>POINTS</th>
+<th>RECOGNITION</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td class="rank-badge">1.</td>
+<td>SARAUTA LYRICS</td>
+<td>365 ⭐</td>
+<td>🏆 Winner / Champion</td>
+</tr>
+
+<tr>
+<td class="rank-badge">2.</td>
+<td>A. SADIK LYRICS</td>
+<td>325 ⭐</td>
+<td>🥈 2nd Place</td>
+</tr>
+
+<tr>
+<td class="rank-badge">3.</td>
+<td>SIYAMAH LYRICS</td>
+<td>270 ⭐</td>
+<td>🥉 3rd Place</td>
+</tr>
+
+<tr>
+<td class="rank-badge">4.</td>
+<td>DEEJAH LYRICS</td>
+<td>270 ⭐</td>
+<td>🏅 4th Place</td>
+</tr>
+
+<tr>
+<td>5.</td>
+<td>BINTU HAFIZ LYRICS</td>
+<td>180</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>6.</td>
+<td>LY SMART LYRICS</td>
+<td>180</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>7.</td>
+<td>NANAH LYRICS</td>
+<td>175</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>8.</td>
+<td>DAN DANGO LYRICS</td>
+<td>165</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>9.</td>
+<td>Y. GARKUWA LYRICS</td>
+<td>85</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>10.</td>
+<td>CRUSH ASMEEY LYRICS</td>
+<td>85</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>11.</td>
+<td>AIIMAR VOICE</td>
+<td>75</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>12.</td>
+<td>ABDULRAHMAN LYRICS</td>
+<td>75</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>13.</td>
+<td>ABDUL LYRICS</td>
+<td>70</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>14.</td>
+<td>KHADIJA LYRICS</td>
+<td>70</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>15.</td>
+<td>MEERAH LYRICS</td>
+<td>65</td>
+<td>Participant Recognition</td>
+</tr>
+
+<tr>
+<td>16.</td>
+<td>YAR AREWA LYRICS</td>
+<td>60</td>
+<td>Participant Recognition</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="competition-box">
+
+<h2>📜 Certificates & Awards</h2>
+
+<p>
+Lyrics Vibes Team recognizes the achievement of the
+competition participants. Certificates of Achievement
+and special award recognition may be presented according
+to the final ranking.
+</p>
+
+<div class="certificate-area">
+<h3>🏆 SARAUTA LYRICS — WINNER CERTIFICATE</h3>
+<p>
+Certificate of Achievement • 1st Place • 365 Points •
+Competition completed 21 June 2026
+</p>
+</div>
+
+<div class="certificate-area">
+<h3>🥈 A. SADIK LYRICS — 2ND PLACE</h3>
+<p>
+Certificate of Achievement • 2nd Place • 325 Points •
+Competition completed 21 June 2026
+</p>
+</div>
+
+<div class="certificate-area">
+<h3>🥉 SIYAMAH LYRICS — 3RD PLACE</h3>
+<p>
+Certificate of Achievement • 3rd Place • 270 Points •
+Competition completed 21 June 2026
+</p>
+</div>
+
+<div class="certificate-area">
+<h3>🏅 DEEJAH LYRICS — 4TH PLACE</h3>
+<p>
+Certificate of Achievement • 4th Place • 270 Points •
+Competition completed 21 June 2026
+</p>
+</div>
+
+</div>
+
+<div class="competition-box">
+
+<h2>🎯 How To Participate</h2>
+
+<p>
+Members participate by creating a Lyrics Video according
+to the competition requirements and submitting their work
+within the announced deadline. Participants are encouraged
+to contribute positively to the team and showcase their creativity.
+</p>
+
+</div>
+
+<div class="competition-box">
+
+<h2>⭐ Judging Criteria</h2>
+
+<div class="place-awards">
+
+<div class="award-card"><h3>✨ Text Animation</h3></div>
+<div class="award-card"><h3>🎨 Text Colors</h3></div>
+<div class="award-card"><h3>🖼️ Background</h3></div>
+<div class="award-card"><h3>📝 Word-by-Word Lyrics</h3></div>
+<div class="award-card"><h3>💡 Creativity</h3></div>
+<div class="award-card"><h3>🎞️ Overall Editing</h3></div>
+
+</div>
+</div>
+
+<div class="competition-box">
+
+<h2>📤 Submission</h2>
+
+<p>
+All competition entries were submitted within the announced
+submission period. The competition is now officially completed.
+</p>
+
+</div>
+
+<div class="competition-box">
+
+<h2>📜 Competition Rules</h2>
+
+<ul class="rules">
+<li>Submit your work within the announced deadline.</li>
+<li>Follow all competition requirements and guidelines.</li>
+<li>The submitted work should be created by the participant.</li>
+<li>Participants should respect the competition instructions provided by the team.</li>
+<li>Any additional rules are announced by the team when required.</li>
+</ul>
+
+</div>
+
+<button class="back-home" onclick="showHome()">← Back to Home</button>
+
+</div>
+</div>
+
+<div class="modal" id="passwordModal">
+
+<div class="modal-box">
+
+<h2>🔐 Member Profile</h2>
+
+<p>Enter the password to view this profile.</p>
+
+<p class="error" id="passwordError">
+Incorrect password. Please try again.
+</p>
+
+<input
+type="password"
+id="passwordInput"
+class="password-input"
+placeholder="Enter password">
+
+<button class="unlock-btn" onclick="checkPassword()">
+Unlock Profile
+</button>
+
+<button class="cancel-btn" onclick="closePassword()">
+Cancel
+</button>
+
+</div>
+</div>
+
+<div class="modal" id="profileModal">
+
+<div class="modal-box">
+
+<h2 id="profileName">Member Profile</h2>
+
+<div class="profile-info">
+
+<p>
+<strong>Member ID:</strong>
+<span id="profileId"></span>
+</p>
+
+<p>
+<strong>Position:</strong>
+<span id="profileRole"></span>
+</p>
+
+<p>
+<strong>Bio:</strong>
+<span id="profileBio"></span>
+</p>
+
+</div>
+
+<button class="close-btn" onclick="closeProfile()">
+Close Profile
+</button>
+
+</div>
+</div>
 
 <footer>
-
-    © 2026
-
-    <span>
-        Lyrics Vibes Team
-    </span>
-
-    — All Rights Reserved.
-
+© 2026 <span>Lyrics Vibes Team</span> — All Rights Reserved.
 </footer>
-
 
 <script>
 
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-
 function hideAllPages(){
-
-    document.getElementById("homePage").style.display = "none";
-
-    document.getElementById("membersPage").style.display = "none";
-
-    document.getElementById("competitionPage").style.display = "none";
+document.getElementById("homePage").style.display="none";
+document.getElementById("membersPage").style.display="none";
+document.getElementById("competitionPage").style.display="none";
 }
-
 
 function showHome(){
-
-    hideAllPages();
-
-    document.getElementById("homePage").style.display = "block";
-
-    closeMobileMenu();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+hideAllPages();
+document.getElementById("homePage").style.display="block";
+closeMobileMenu();
+window.scrollTo({top:0,behavior:"smooth"});
 }
-
 
 function showMembers(){
-
-    hideAllPages();
-
-    document.getElementById("membersPage").style.display = "block";
-
-    closeMobileMenu();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+hideAllPages();
+document.getElementById("membersPage").style.display="block";
+closeMobileMenu();
+window.scrollTo({top:0,behavior:"smooth"});
 }
-
 
 function showCompetition(){
-
-    hideAllPages();
-
-    document.getElementById("competitionPage").style.display = "block";
-
-    closeMobileMenu();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+hideAllPages();
+document.getElementById("competitionPage").style.display="block";
+closeMobileMenu();
+window.scrollTo({top:0,behavior:"smooth"});
 }
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
 
 function toggleMobileMenu(){
-
-    const menu =
-        document.getElementById("mobileNav");
-
-    menu.classList.toggle("show");
+document.getElementById("mobileNav").classList.toggle("show");
 }
-
 
 function closeMobileMenu(){
-
-    document
-        .getElementById("mobileNav")
-        .classList.remove("show");
+document.getElementById("mobileNav").classList.remove("show");
 }
-
 
 function mobileGo(page){
+closeMobileMenu();
 
-    closeMobileMenu();
-
-    if(page === "home"){
-        showHome();
-    }
-
-    if(page === "members"){
-        showMembers();
-    }
-
-    if(page === "competition"){
-        showCompetition();
-    }
+if(page==="home")showHome();
+if(page==="members")showMembers();
+if(page==="competition")showCompetition();
 }
 
+const MEMBER_PASSWORD="LVT2025";
 
-/* =========================================================
-   MEMBER PASSWORD
-========================================================= */
+let selectedMember=null;
 
-const MEMBER_PASSWORD = "LVT2025";
+function openProfile(name,id,role,bio){
 
-let selectedMember = null;
+selectedMember={
+name:name,
+id:id,
+role:role,
+bio:bio
+};
 
+document.getElementById("passwordInput").value="";
+document.getElementById("passwordError").style.display="none";
+document.getElementById("passwordModal").style.display="flex";
 
-function openProfile(
-    name,
-    id,
-    role,
-    bio
-){
+setTimeout(()=>{
+document.getElementById("passwordInput").focus();
+},100);
 
-    selectedMember = {
-        name:name,
-        id:id,
-        role:role,
-        bio:bio
-    };
-
-    document.getElementById(
-        "passwordInput"
-    ).value = "";
-
-    document.getElementById(
-        "passwordError"
-    ).style.display = "none";
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display = "flex";
-
-    setTimeout(function(){
-
-        document.getElementById(
-            "passwordInput"
-        ).focus();
-
-    },100);
 }
-
 
 function checkPassword(){
 
-    const enteredPassword =
-        document.getElementById(
-            "passwordInput"
-        ).value;
+const entered=
+document.getElementById("passwordInput").value;
 
-    if(
-        enteredPassword ===
-        MEMBER_PASSWORD
-    ){
+if(entered===MEMBER_PASSWORD){
 
-        document.getElementById(
-            "passwordModal"
-        ).style.display = "none";
+document.getElementById("passwordModal").style.display="none";
 
-        document.getElementById(
-            "profileName"
-        ).textContent =
-            selectedMember.name;
+document.getElementById("profileName").textContent=
+selectedMember.name;
 
-        document.getElementById(
-            "profileId"
-        ).textContent =
-            selectedMember.id;
+document.getElementById("profileId").textContent=
+selectedMember.id;
 
-        document.getElementById(
-            "profileRole"
-        ).textContent =
-            selectedMember.role;
+document.getElementById("profileRole").textContent=
+selectedMember.role;
 
-        document.getElementById(
-            "profileBio"
-        ).textContent =
-            selectedMember.bio;
+document.getElementById("profileBio").textContent=
+selectedMember.bio;
 
-        document.getElementById(
-            "profileModal"
-        ).style.display = "flex";
+document.getElementById("profileModal").style.display="flex";
 
-    }else{
+}else{
 
-        document.getElementById(
-            "passwordError"
-        ).style.display = "block";
+document.getElementById("passwordError").style.display="block";
 
-    }
 }
 
+}
 
 function closePassword(){
-
-    document.getElementById(
-        "passwordModal"
-    ).style.display = "none";
+document.getElementById("passwordModal").style.display="none";
 }
-
 
 function closeProfile(){
-
-    document.getElementById(
-        "profileModal"
-    ).style.display = "none";
+document.getElementById("profileModal").style.display="none";
 }
 
-
-document.getElementById(
-    "passwordInput"
-).addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-            checkPassword();
-        }
-
-    }
+document.getElementById("passwordInput").addEventListener(
+"keydown",
+e=>{
+if(e.key==="Enter")checkPassword();
+}
 );
 
+window.addEventListener("click",e=>{
 
-window.addEventListener(
-    "click",
-    function(event){
+const p=document.getElementById("passwordModal");
+const m=document.getElementById("profileModal");
 
-        const passwordModal =
-            document.getElementById(
-                "passwordModal"
-            );
+if(e.target===p)closePassword();
+if(e.target===m)closeProfile();
 
-        const profileModal =
-            document.getElementById(
-                "profileModal"
-            );
-
-        if(event.target === passwordModal){
-            closePassword();
-        }
-
-        if(event.target === profileModal){
-            closeProfile();
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PWA SERVICE WORKER
-========================================================= */
+});
 
 if("serviceWorker" in navigator){
 
-    window.addEventListener("load", function(){
+window.addEventListener("load",()=>{
 
-        navigator.serviceWorker
-            .register("service-worker.js")
-            .then(function(){
+navigator.serviceWorker
+.register("service-worker.js")
+.then(()=>{
+console.log("LYRICS VIBES TEAM PWA is ready.");
+})
+.catch(error=>{
+console.error(
+"Service Worker registration failed:",
+error
+);
+});
 
-                console.log(
-                    "LYRICS VIBES TEAM PWA is ready."
-                );
-
-            })
-            .catch(function(error){
-
-                console.error(
-                    "Service Worker registration failed:",
-                    error
-                );
-
-            });
-
-    });
+});
 
 }
 
