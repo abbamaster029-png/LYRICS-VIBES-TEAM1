@@ -1,4 +1,4 @@
-const CACHE_NAME = "lvt-app-v1";
+const CACHE_NAME = "lvt-app-v2";
 
 const FILES_TO_CACHE = [
     "./",
@@ -6,8 +6,8 @@ const FILES_TO_CACHE = [
     "./about.html",
     "./apply.html",
     "./manifest.json",
-    "./lvt-icon-192.png",
-    "./lvt-icon-512.png"
+    "./lvt-icon-192-2.png",
+    "./lvt-icon-512-1.png"
 ];
 
 
@@ -18,13 +18,20 @@ const FILES_TO_CACHE = [
 self.addEventListener("install", event => {
 
     event.waitUntil(
+
         caches.open(CACHE_NAME)
             .then(cache => {
-                return cache.addAll(FILES_TO_CACHE);
+
+                return cache.addAll(
+                    FILES_TO_CACHE
+                );
+
             })
+
     );
 
     self.skipWaiting();
+
 });
 
 
@@ -36,31 +43,33 @@ self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        caches.keys().then(cacheNames => {
+        caches.keys()
+            .then(cacheNames => {
 
-            return Promise.all(
+                return Promise.all(
 
-                cacheNames.map(cacheName => {
+                    cacheNames.map(cacheName => {
 
-                    if (
-                        cacheName !== CACHE_NAME
-                    ) {
+                        if (
+                            cacheName !== CACHE_NAME
+                        ) {
 
-                        return caches.delete(
-                            cacheName
-                        );
+                            return caches.delete(
+                                cacheName
+                            );
 
-                    }
+                        }
 
-                })
+                    })
 
-            );
+                );
 
-        })
+            })
 
     );
 
     self.clients.claim();
+
 });
 
 
@@ -76,10 +85,24 @@ self.addEventListener("fetch", event => {
             .then(cachedResponse => {
 
                 if (cachedResponse) {
+
                     return cachedResponse;
+
                 }
 
-                return fetch(event.request);
+                return fetch(event.request)
+                    .then(networkResponse => {
+
+                        return networkResponse;
+
+                    });
+
+            })
+            .catch(() => {
+
+                return caches.match(
+                    "./index.html"
+                );
 
             })
 
