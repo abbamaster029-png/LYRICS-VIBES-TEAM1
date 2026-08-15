@@ -1,24 +1,39 @@
-const CACHE_NAME = "lvt-app-v2";
+const CACHE_NAME = "lvt-app-v3";
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./lvt-icon-512-1.png"
+  "./lvt-icon-512-1.png",
   "./New Project 99 [0AAD052].png"
 ];
+
+
+/* ==============================
+   INSTALL
+============================== */
 
 self.addEventListener("install", event => {
 
   event.waitUntil(
+
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(FILES_TO_CACHE))
+      .then(cache => {
+
+        return cache.addAll(FILES_TO_CACHE);
+
+      })
+
   );
 
   self.skipWaiting();
 
 });
 
+
+/* ==============================
+   ACTIVATE
+============================== */
 
 self.addEventListener("activate", event => {
 
@@ -28,9 +43,15 @@ self.addEventListener("activate", event => {
 
       return Promise.all(
 
-        cacheNames
-          .filter(name => name !== CACHE_NAME)
-          .map(name => caches.delete(name))
+        cacheNames.map(cacheName => {
+
+          if (cacheName !== CACHE_NAME) {
+
+            return caches.delete(cacheName);
+
+          }
+
+        })
 
       );
 
@@ -45,14 +66,86 @@ self.addEventListener("activate", event => {
 });
 
 
+/* ==============================
+   FETCH
+============================== */
+
 self.addEventListener("fetch", event => {
+
+  /*
+     Domin sabon index.html ya rika fitowa
+     maimakon tsohon cached version.
+  */
+
+  if (
+    event.request.method === "GET" &&
+    new URL(event.request.url).pathname.endsWith("/index.html")
+  ) {
+
+    event.respondWith(
+
+      fetch(event.request)
+        .then(response => {
+
+          const responseClone = response.clone();
+
+          caches.open(CACHE_NAME)
+            .then(cache => {
+
+              cache.put(
+                event.request,
+                responseClone
+              );
+
+            });
+
+          return response;
+
+        })
+        .catch(() => {
+
+          return caches.match(
+            event.request
+          );
+
+        })
+
+    );
+
+    return;
+
+  }
+
+
+  /*
+     Sauran files:
+     cache idan akwai,
+     idan babu sai network.
+  */
 
   event.respondWith(
 
     caches.match(event.request)
-      .then(response => {
+      .then(cachedResponse => {
 
-        return response || fetch(event.request);
+        if (cachedResponse) {
+
+          return cachedResponse;
+
+        }
+
+        return fetch(event.request)
+          .then(networkResponse => {
+
+            return networkResponse;
+
+          });
+
+      })
+
+      .catch(() => {
+
+        return caches.match("./index.html");
 
       })
 
