@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LVT Lyrics Competition | Lyrics Vibes Team</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#03152d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+:root{
+    --gold:#e0ad22;
+    --gold2:#f2c43d;
+    --navy:#03152d;
+    --card:#071f3d;
+}
+
+header{
+    height:58px;
+    background:#050505;
+    border-bottom:1px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:var(--gold2);
+    font-size:18px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:27px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+}
+
+nav a:hover{
+    color:var(--gold2);
+}
+
+.container{
+    width:94%;
+    max-width:1250px;
+    margin:auto;
+}
+
+/* HERO */
+
+.hero{
+    padding:40px 0 30px;
+    display:grid;
+    grid-template-columns:280px 1fr 260px;
+    gap:25px;
+    align-items:center;
+}
+
+.trophy{
+    text-align:center;
+    font-size:140px;
+    filter:drop-shadow(0 0 18px rgba(242,196,61,.5));
+}
+
+.title h1{
+    color:var(--gold2);
+    font-size:43px;
+    margin-bottom:12px;
+}
+
+.title h2{
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.title p{
+    color:#d4dce7;
+    line-height:1.7;
+}
+
+.completed{
+    border:1px solid var(--gold);
+    border-radius:10px;
+    padding:25px 15px;
+    text-align:center;
+    background:rgba(224,173,34,.08);
+}
+
+.completed .date{
+    color:var(--gold2);
+    font-size:22px;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+/* BOX */
+
+.box{
+    border:1px solid rgba(224,173,34,.6);
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:16px;
+    background:linear-gradient(180deg,#071f3d,#03152d);
+}
+
+.box h2{
+    color:var(--gold2);
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:25px;
+}
+
+.about p{
+    color:#d3dce7;
+    line-height:1.8;
+    font-size:13px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+.feature{
+    padding:18px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.15);
+}
+
+.feature div{
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+/* COLUMNS */
+
+.columns{
+    display:grid;
+    grid-template-columns:1.08fr 1fr;
+    gap:16px;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:560px;
+    border-collapse:collapse;
+}
+
+th{
+    background:#06172f;
+    padding:11px;
+    text-align:left;
+    font-size:11px;
+    border-bottom:1px solid var(--gold);
+}
+
+td{
+    padding:9px;
+    font-size:11px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.winner-row{
+    background:linear-gradient(
+        90deg,
+        rgba(224,173,34,.7),
+        rgba(174,119,0,.5)
+    );
+}
+
+.gold-text{
+    color:var(--gold2);
+    font-weight:bold;
+}
+
+/* WINNERS */
+
+.winners{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.winner{
+    min-height:185px;
+    border:1px solid rgba(224,173,34,.7);
+    border-radius:9px;
+    padding:15px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:#061d3b;
+}
+
+.medal{
+    font-size:55px;
+}
+
+.place{
+    background:linear-gradient(90deg,#b57d05,#f2c43d);
+    color:#071a33;
+    padding:5px 12px;
+    border-radius:4px;
+    font-size:10px;
+    font-weight:bold;
+    margin:7px 0;
+}
+
+.winner h3{
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+/* CERTIFICATE */
+
+.certificate{
+    margin-top:15px;
+    padding:20px;
+    border:1px solid rgba(224,173,34,.6);
+    border-radius:9px;
+    background:rgba(224,173,34,.07);
+}
+
+.certificate p{
+    color:#d2dae4;
+    font-size:12
