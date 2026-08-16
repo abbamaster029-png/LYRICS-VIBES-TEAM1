@@ -1,10 +1,10 @@
 {
-  "id": "/LYRICS-VIBES-TEAM1/",
+ "id": "/LYRICS-VIBES-TEAM/",
   "name": "LYRICS VIBES TEAM",
   "short_name": "LVT",
   "description": "Official LYRICS VIBES TEAM creative community app.",
-  "start_url": "/LYRICS-VIBES-TEAM1/",
-  "scope": "/LYRICS-VIBES-TEAM1/",
+  "start_url": "/LYRICS-VIBES-TEAM/",
+  "scope": "/LYRICS-VIBES-TEAM/"
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#03152d",
