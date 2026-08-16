@@ -1,10 +1,10 @@
 {
-  "id": "/LYRICS-VIBES-TEAM1/",
+  "id": "/LYRICS-VIBES-TEAM/",
   "name": "LYRICS VIBES TEAM",
   "short_name": "LVT",
   "description": "Official LYRICS VIBES TEAM creative community app.",
-  "start_url": "/LYRICS-VIBES-TEAM1/",
-  "scope": "/LYRICS-VIBES-TEAM1/",
+  "start_url": "/LYRICS-VIBES-TEAM/",
+  "scope": "/LYRICS-VIBES-TEAM/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#03152d",
@@ -17,13 +17,13 @@
   ],
   "icons": [
     {
-      "src": "/LYRICS-VIBES-TEAM1/lvt-icon-192-2.png",
+      "src": "/LYRICS-VIBES-TEAM/lvt-icon-192-2.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/LYRICS-VIBES-TEAM1/lvt-icon-512-1.png",
+      "src": "/LYRICS-VIBES-TEAM/lvt-icon-512-1.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
