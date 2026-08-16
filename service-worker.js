@@ -1,17 +1,20 @@
-const CACHE_NAME = "lvt-app-v3";
+const CACHE_NAME = "lvt-app-v4";
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
+  "./about.html",
+  "./apply.html",
   "./manifest.json",
+  "./lvt-icon-192-2.png",
   "./lvt-icon-512-1.png",
   "./New Project 99 [0AAD052].png"
 ];
 
 
-/* ==============================
+/* =====================================================
    INSTALL
-============================== */
+===================================================== */
 
 self.addEventListener("install", event => {
 
@@ -31,9 +34,9 @@ self.addEventListener("install", event => {
 });
 
 
-/* ==============================
+/* =====================================================
    ACTIVATE
-============================== */
+===================================================== */
 
 self.addEventListener("activate", event => {
 
@@ -66,25 +69,35 @@ self.addEventListener("activate", event => {
 });
 
 
-/* ==============================
+/* =====================================================
    FETCH
-============================== */
+===================================================== */
 
 self.addEventListener("fetch", event => {
 
+  if (event.request.method !== "GET") {
+    return;
+  }
+
+
+  const requestURL = new URL(event.request.url);
+
+
   /*
-     Domin sabon index.html ya rika fitowa
-     maimakon tsohon cached version.
+     HTML PAGES
+     Network First:
+     Sabon version ya fara zuwa.
+     Idan babu internet, sai cached version.
   */
 
   if (
-    event.request.method === "GET" &&
-    new URL(event.request.url).pathname.endsWith("/index.html")
+    event.request.destination === "document"
   ) {
 
     event.respondWith(
 
       fetch(event.request)
+
         .then(response => {
 
           const responseClone = response.clone();
@@ -102,11 +115,16 @@ self.addEventListener("fetch", event => {
           return response;
 
         })
+
         .catch(() => {
 
-          return caches.match(
-            event.request
-          );
+          return caches.match(event.request)
+            .then(cachedResponse => {
+
+              return cachedResponse ||
+                     caches.match("./index.html");
+
+            });
 
         })
 
@@ -118,14 +136,16 @@ self.addEventListener("fetch", event => {
 
 
   /*
-     Sauran files:
-     cache idan akwai,
-     idan babu sai network.
+     OTHER FILES
+     Cache First:
+     Idan file yana cache, amfani da shi.
+     Idan babu, daga network.
   */
 
   event.respondWith(
 
     caches.match(event.request)
+
       .then(cachedResponse => {
 
         if (cachedResponse) {
@@ -134,8 +154,31 @@ self.addEventListener("fetch", event => {
 
         }
 
+
         return fetch(event.request)
+
           .then(networkResponse => {
+
+            if (
+              networkResponse &&
+              networkResponse.status === 200 &&
+              networkResponse.type !== "opaque"
+            ) {
+
+              const responseClone =
+                networkResponse.clone();
+
+              caches.open(CACHE_NAME)
+                .then(cache => {
+
+                  cache.put(
+                    event.request,
+                    responseClone
+                  );
+
+                });
+
+            }
 
             return networkResponse;
 
