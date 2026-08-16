@@ -1,4 +1,4 @@
-const CACHE_NAME = "lvt-app-v6";
+const CACHE_NAME = "lvt-app-v7";
 
 const FILES_TO_CACHE = [
   "./",
@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
   "./about.html",
   "./apply.html",
   "./manifest.json",
+  "./service-worker.js",
   "./lvt-icon-192-2.png",
   "./lvt-icon-512-1.png",
   "./New Project 99 [0AAD052].png"
